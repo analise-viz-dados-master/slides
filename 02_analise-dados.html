@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Análise e visualização de dados com R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Francisco Alves" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/countdown-0.3.5/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown-0.3.5/countdown.js"></script>
+    <link rel="stylesheet" href="assets/styles.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Análise e visualização de dados com R
+## Processo de análise de dados
+### Francisco Alves
+### 2020/03/06
+
+---
+
+class: hide-logo
+
+# Fluxo de Análise de Dados
+
+&lt;img src="assets/img/f4c8792ce66637cca0b0b67d84e30212.png" width="1464" /&gt;
+
+.footnote[
+H. Wickham (Aut), G. Grolemund (Aut), S. Batista (Tra), [R Para Data Science](https://www.amazon.com.br/Para-Data-Science-Hadley-Wickham/dp/8550803243/)
+]
+
+---
+class: hide-logo
+# Estudo de base
+
+### Remuneração dos servidores públicos ativos do Poder Executivo Estadual
+
+Divulgação dos dados de pessoal do Poder Executivo do Estado de Minas Gerais, conforme previsto no Decreto Estadual nº 45.969/2012 e Resolução Conjunta SEPLAG/CGE nº 8676, de 30 de julho de 2012.
+
+&gt; Sua remuneração bruta, cargos e funções por eles titularizados, órgãos de sua formal lotação, tudo é constitutivo de informação de interesse coletivo ou geral. Expondo-se, portanto, a divulgação oficial. [...] Não cabe, no caso, falar de intimidade ou de vida privada, pois os dados objeto da divulgação em causa dizem respeito a agentes públicos enquanto agentes públicos mesmos; ou, na linguagem da própria Constituição, agentes estatais agindo “nessa qualidade”. [STF - RECURSO EXTRAORDINÁRIO 652.777-SP](http://redir.stf.jus.br/paginadorpub/paginador.jsp?docTP=TP&amp;docID=8831570)
+
+* [Consulta interativa](http://www.transparencia.mg.gov.br/estado-pessoal/remuneracao-dos-servidores)
+* [Dados abertos](http://www.transparencia.dadosabertos.mg.gov.br/dataset/remuneracao-dos-servidores)
+* [Dicionário de dados](http://www.transparencia.dadosabertos.mg.gov.br/dataset/remuneracao-dos-servidores/resource/ab5a9b7b-4af3-4720-8029-8f96d7517d17)
+
+---
+# Importar
+
+* Carregamento dos dados do local em que eles se encontram armazenados e carregamento em um software 
+  * Ex1: Duplo clique em uma planilha eletrônica
+  * Ex2: Requisição HTTP para uma API RESTful
+
+
+* E se os dados não existem? 
+  * [Planejamento de pesquisa &amp; coleta de dados](http://www.creative-wisdom.com/teaching/WBI/dma.shtml)
+  
+---
+# Arrumar
+
+* Estruturação dos dados de tal forma que a análise exploratória seja tão simples quanto possível
+
+* Linhas representem observações e as colunas representem variáveis
+
+* Limpeza de dados também ocorre nessa etapa
+
+* Usualmente o significado dos dados não vai mudar
+
+--
+
+&lt;br&gt;
+
+Caso concreto:
+
+&lt;br&gt;
+
+| Ano  | Masp | Órgão                        | jan   | fev   |
+| ---- | ---- | ---------------------------- | ----- | ----- |
+| 2019 | m123 | SECRETARIA DE PLANEJAMENTO   | 6000  | 4500  |
+| 2019 | m456 | SEC DE PLANEJAMENTO E GESTAO | 13300 | 10000 |
+
+---
+# Arrumar
+
+#### Tabela original (1)
+
+| Ano  | Masp | Órgão                        | jan   | fev   |
+| ---- | ---- | ---------------------------- | ----- | ----- |
+| 2019 | m123 | SECRETARIA DE PLANEJAMENTO   | 6000  | 4500  |
+| 2019 | m456 | SEC DE PLANEJAMENTO E GESTAO | 13300 | 10000 | 
+
+#### Tabela arrumada (2)
+
+| Ano  | Masp | Órgão                        | Mês | Remuneração | 
+| ---- | ---- | ---------------------------- | --- | ----------- |
+| 2019 | m123 | SECRETARIA DE PLANEJAMENTO   | jan | 6000        |
+| 2019 | m123 | SECRETARIA DE PLANEJAMENTO   | fev | 4500        |
+| 2019 | m456 | SEC DE PLANEJAMENTO E GESTAO | jan | 13300       |
+| 2019 | m456 | SEC DE PLANEJAMENTO E GESTAO | fev | 10000       |
+
+---
+# Arrumar
+
+#### Tabela arrumada (2)
+
+| Ano  | Masp | Órgão                        | Mês | Remuneração | 
+| ---- | ---- | ---------------------------- | --- | ----------- |
+| 2019 | m123 | SECRETARIA DE PLANEJAMENTO   | jan | 6000        |
+| 2019 | m123 | SECRETARIA DE PLANEJAMENTO   | fev | 4500        |
+| 2019 | m456 | SEC DE PLANEJAMENTO E GESTAO | jan | 13300       |
+| 2019 | m456 | SEC DE PLANEJAMENTO E GESTAO | fev | 10000       |
+
+#### Tabela limpa (3)
+
+| Ano  | Masp | Órgão  | Mês | Remuneração |
+| ---- | ---- | ------ | --- | ----------- |
+| 2019 | m123 | SEPLAG | jan | 6000        |
+| 2019 | m123 | SEPLAG | fev | 4500        |
+| 2019 | m456 | SEPLAG | jan | 13300       |
+| 2019 | m456 | SEPLAG | fev | 10000       |
+
+---
+# Transformar
+
+* Transformações são todas as outras manipulações de dados que não se enquadram como arrumação e limpeza &amp;#x1F61C;
+
+* Os principais exemplos são:
+  * Filtrar observações de interesse
+  
+  * Ordenar as observações com base em uma ou mais variáveis
+  
+  * Selecionar variáveis especificas para fins de análise
+  
+  * Criar novas variáveis com base nas existentes
+  
+  * Sumarizar uma variável (qualitativa ou quantitativa) de interesse
+
+---
+# Visualizar
+
+* Seja com os dados primários, transformados, ou sumarizados pra facilitar o entendimento vamos criar visualizações
+
+* O objetivo é utilizar a capacidade humana de percepção visual pra extrair informações dos dados
+
+---
+class: inverse, hide-logo
+
+# Atividade
+
+Para ilustrar a capacidade de uma visualização de dados potencializar a apropriação de informação vamos fazer um breve quiz.
+
+O objetivo é analisar dados tabulares e estatísticas descritivas para identificar padrões de comportamento nos dados.
+
+O link para o quiz será disponibilizado em sala de aula.
+
+<div class="countdown" id="timer_5e61a2cf" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+<style>
+.logo {
+  background-image: url("assets/img/f4c8792ce66637cca0b0b67d84e30212.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 300px;
+  height: 350px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

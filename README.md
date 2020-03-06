@@ -5,3 +5,4 @@ O objetivo desta disciplina é apresentar ao aluno a utilização do ambiente co
 Links para os slides:
 
 * [Introdução](https://fjuniorr.github.io/eg-fjp_analise-visualizacao-dados_2020-01/01_intro)
+* [Processo de análise de dados](https://fjuniorr.github.io/eg-fjp_analise-visualizacao-dados_2020-01/02_analise-dados)
