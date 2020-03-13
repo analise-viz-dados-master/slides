@@ -181,7 +181,7 @@ Além disso, preencha o questionário sobre as suas experiências e habilidades 
 
 Isso vai auxiliar na estratégia de apresentação do conteúdo do curso.
 
-`r countdown::countdown(minutes = 2)`
+`r countdown::countdown(minutes = 3)`
 
 ---
 class: inverse

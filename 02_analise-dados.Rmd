@@ -2,7 +2,7 @@
 title: "Análise e visualização de dados com R"
 subtitle: "Processo de análise de dados"
 author: "Francisco Alves"
-date: "2020/03/06"
+date: "2020/03/06 (Atualizado em 2020/03/13)"
 output: 
   xaringan::moon_reader:
     lib_dir: libs
@@ -10,11 +10,17 @@ output:
     includes:
       after_body: "assets/logo.html"
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+suppressPackageStartupMessages(library(tidyverse))
+```
+
 class: hide-logo
 
 # Fluxo de Análise de Dados
 
-```{r echo=FALSE}
+```{r}
 knitr::include_graphics("assets/img/f4c8792ce66637cca0b0b67d84e30212.png")
 ```
 
@@ -130,9 +136,7 @@ Caso concreto:
 ---
 # Visualizar
 
-* Seja com os dados primários, transformados, ou sumarizados pra facilitar o entendimento vamos criar visualizações
-
-* O objetivo é utilizar a capacidade humana de percepção visual pra extrair informações dos dados
+* Nosso objetivo ao criar uma visualização é utilizar a capacidade humana de percepção visual para potencializar a extração de informações de um conjunto de dados
 
 ---
 class: inverse, hide-logo
@@ -146,3 +150,241 @@ O objetivo é analisar dados tabulares e estatísticas descritivas para identifi
 O link para o quiz será disponibilizado em sala de aula.
 
 `r countdown::countdown(minutes = 5)`
+
+---
+exclude: true
+class: hide-logo
+
+# Fundamentos
+
+__ESTATÍSTICA: 60 horas/aula__
+
+Ementa: Séries estatísticas. Medidas de posição, dispersão e assimetria. Correlação e análise de regressão. Introdução à probabilidade. Distribuições mais utilizadas. ~~Inferência e testes de hipóteses~~.
+
+.footnote[
+-- [Projeto Pedagógico CSAP](http://novosite.fjp.mg.gov.br/wp-content/uploads/2019/08/Projeto-pedagogico.pdf), pg. 23
+]
+
+---
+class: hide-logo
+
+# Quarteto de Anscombe
+
+.center[
+```{r anscombe-plots-all, fig.path='assets/img/'}
+# source: https://rpubs.com/dgrtwo/tidy-anscombe
+anscombe %>%
+    mutate(observation = seq_len(n())) %>%
+    gather(key, value, -observation) %>%
+    separate(key, c("variable", "set"), 1, convert = TRUE) %>%
+    mutate(set = c("Conjunto I", "Conjunto II", "Conjunto III", "Conjunto IV")[set]) %>%
+    spread(variable, value) %>% 
+    ggplot(aes(x, y)) +
+    geom_point() +
+    facet_wrap(~ set) +
+    geom_smooth(method = "lm", se = FALSE)
+```
+]
+
+
+---
+class: hide-logo
+# The Datasaurus
+
+.center[
+```{r, out.width='50%'}
+knitr::include_graphics(path = "assets/img/datasaurus.png")
+```
+]
+
+.footnote[
+-- Alberto Cairo, [The Functional Art Blog](http://www.thefunctionalart.com/2016/08/download-datasaurus-never-trust-summary.html)
+]
+
+---
+class: hide-logo
+# The Datasaurus Dozen
+
+.center[
+```{r}
+knitr::include_graphics(path = "https://d2f99xq7vri1nk.cloudfront.net/DinoSequentialSmaller.gif")
+```
+]
+
+.footnote[
+-- Justin Matejka, George Fitzmaurice. [Same Stats, Different Graphs](https://www.autodeskresearch.com/publications/samestats). 
+]
+
+---
+# Visualizar
+
+O primeiro princípio para compreensão de dados de Shewhart é
+
+> Dados devem sempre ser apresentados de maneira a preservar as evidências para todas as previsões e análises que possam ser feitas a partir dos mesmos. (tradução nossa)
+
+Esse princípio sugere que
+
+1. Uma tabela com valores deve acompanhar a maior parte dos gráficos;
+2. Um gráfico deve acompanhar qualquer tabela.
+
+.footnote[
+-- Donald Wheeler, [Understanding Variation: The Key to Managing Chaos](https://www.amazon.com.br/Understanding-Variation-Key-Managing-Chaos/dp/0945320531), pg. 12
+]
+
+---
+# Modelar
+
+Um modelo é uma representação ou interpretação simplificada de algum fenômeno de interesse.
+
+> Todos os modelos estão errados. Alguns são úteis. (tradução nossa)
+
+.footnote[
+-- George E. P. Box, [All models are wrong](https://en.wikipedia.org/wiki/All_models_are_wrong)
+]
+---
+class: hide-logo
+
+.center[
+```{r}
+knitr::include_graphics("https://cancerevo.files.wordpress.com/2014/09/london_underground-tube-map.jpg")
+```
+]
+
+.footnote[
+-- David Basanta, [Making maps for cancer](https://cancerevo.wordpress.com/2014/09/11/making-maps-for-cancer/)
+]
+
+---
+class: hide-logo
+# Modelos matemáticos
+
+* Utilização da linguagem matemática para representar um fenômeno de interesse
+
+* Um modelo matemático pode ser expressado em linguagem natural
+
+* Exemplo remuneração
+  * Calcule a média da remuneração da cada orgão
+  * Calcule a diferença entre a média da remuneração de um orgão base e demais
+---
+class: hide-logo
+# Modelos matemáticos - exemplo
+
+.center[
+```{r jitter-plot-remuneracao, echo=FALSE, message=FALSE, fig.path='assets/img/'}
+col_names <- c(
+  "masp", "nome", "situacao_servidor", "cargo_efetivo", "apostila", "cargo_comissao",
+  "orgao", "unidade_adm", "carga_horaria", "vl_remuneracao_bruta", "vl_abate_teto",
+  "decisao_judicial_teto", "vl_ferias", "vl_grat_natal", "vl_premio_prod",
+  "vl_ferias_premio", "vl_jetons_adm_direta", "vl_demais_eventuais", "vl_irrf",
+  "vl_contribuicao_previdenciaria", "vl_remuneracao_liquida", "vl_jeton_bdmg",
+  "vl_jeton_cemig", "vl_jeton_codemig", "vl_jeton_cohab", "vl_jeton_copasa",
+  "vl_jeton_emater", "vl_jeton_epamig", "vl_jeton_funpemg", "vl_jeton_gasmig",
+  "vl_jeton_mgi", "vl_jeton_mgs", "vl_jeton_prodemge", "vl_jeton_prominas", "vl_jeton_emip"
+)
+
+df_raw <- read_csv2(here::here("data-raw/ServidoresMG_1219.csv"),
+  col_names = col_names,
+  col_types = "ccccccccnnncnnnnnnnnnnnnnnnnnnnnnnn",
+  skip = 1
+)
+
+df <- df_raw %>%
+  select(masp, orgao, cargo_efetivo, vl_remuneracao_liquida) %>%
+  filter(orgao %in% c("ADVOCACIA GERAL DO ESTADO", "SEC DE PLANEJAMENTO E GESTAO", "FUNDACAO HELENA ANTIPOFF")) %>% 
+  drop_na()
+
+# df %>%
+#   group_by(orgao) %>% 
+#   summarize(vl_remuneracao_liquida_media = mean(vl_remuneracao_liquida)) %>% 
+#   arrange(vl_remuneracao_liquida_media)
+
+df %>%
+  mutate(orgao = fct_reorder(orgao, vl_remuneracao_liquida)) %>% 
+  ggplot(aes(x = orgao, y = vl_remuneracao_liquida)) +
+  geom_jitter()
+```
+]
+
+---
+class: hide-logo
+# Modelos matemáticos - exemplo
+
+```{r model-fit-remuneracao, echo=FALSE, fig.path='assets/img/'}
+fit <- df %>% 
+  mutate(orgao = fct_relevel(orgao, "FUNDACAO HELENA ANTIPOFF")) %>% 
+  lm(vl_remuneracao_liquida ~ orgao, data = .)
+
+sjPlot::tab_model(fit)
+```
+
+
+---
+# Comunicar
+
+Existe uma pessoa no final do nosso ciclo? 
+
+Em caso positivo:
+
+> A comunicação é um processo que envolve a troca de informações entre dois ou mais interlocutores por meio de signos<sup>1</sup> e regras semióticas<sup>2</sup> mutuamente entendíveis. 
+
+O nosso livro texto R for Data Science, possui indicação de referências relevantes sobre [escrita](https://r4ds.had.co.nz/r-markdown.html#learning-more-3) e [comunicação efetiva](https://r4ds.had.co.nz/r-markdown-formats.html#learning-more-5).
+
+.footnote[
+[1] Signos consistem em todos os elementos que representam algum significado e sentido para o ser humano, abrangendo as linguagens verbais e não-verbais
+
+[2] A semiótica é o estudo da construção de significado
+]
+
+---
+# Comunicar
+
+Em caso negativo:
+
+> Agentes inteligentes são entidades de software que realizam um conjunto de operações em nome de um usuário ou outro programa com algum grau de independência ou autonomia e, ao fazê-lo, empregam algum conhecimento ou representação dos objetivos ou desejos do usuário
+
+Curiosidade
+
+.small[
+> __[Lei Geral de Proteção de Dados Pessoais (LGPD)](http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm)__
+> 
+> Art. 20. O titular dos dados tem direito a solicitar a revisão de decisões tomadas unicamente com base em tratamento automatizado de dados pessoais que afetem seus interesses, incluídas as decisões destinadas a definir o seu perfil pessoal, profissional, de consumo e de crédito ou os aspectos de sua personalidade.
+> 
+> § 1º O controlador deverá fornecer, sempre que solicitadas, informações claras e adequadas a respeito dos critérios e dos procedimentos utilizados para a decisão automatizada, observados os segredos comercial e industrial.
+> 
+> § 2º Em caso de não oferecimento de informações de que trata o § 1º deste artigo baseado na observância de segredo comercial e industrial, a autoridade nacional poderá realizar auditoria para verificação de aspectos discriminatórios em tratamento automatizado de dados pessoais.
+]
+
+---
+# Programar
+
+> O código-fonte é real. Objetos são realizações do código-fonte. A fonte para _TODO_ objeto modificado pelo usuário é armazenado em um diretório para posterior recuperação e edição. (tradução nossa)
+
+
+
+.footnote[
+-- [Philosophies for using ESS[R]](https://ess.r-project.org/Manual/ess.html#Philosophies-for-using-ESS_0028R_0029)
+]
+
+---
+class: hide-logo
+# Low-Code/No-Code Movement
+
+.center[
+```{r, out.width='65%'}
+knitr::include_graphics("assets/img/no-code-low-code-movement.png")
+```
+]
+
+---
+class: hide-logo
+# Love Code Movement
+
+.center[
+```{r, out.width='65%'}
+knitr::include_graphics("assets/img/love-code-movement.png")
+```
+]
+
+.footnote[
+-- Tareef Kawaf, [RStudio Vision](https://resources.rstudio.com/rstudio-conf-2019/opening-keynote-tareef-kawaf)
+]

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Análise e visualização de dados com R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Francisco Alves" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Análise e visualização de dados com R
+## Pesquisa reproduzível
+### Francisco Alves
+### 2020/03/13
+
+---
+
+
+
+# Fluxo de Análise de Dados - Artefatos
+
+&lt;img src="assets/img/4c1b98e11888e55fa81275af92e24b02.png" width="90%" /&gt;
+
+.footnote[
+-- Roger D. Peng, [Report Writing for Data Science in R](https://leanpub.com/reportwriting), pg. 9
+]
+
+---
+# Pesquisa reproduzível
+
+&gt; Um artigo sobre ciência computacional em uma revista científica não é conhecimento, é apenas propaganda do conhecimento. O conhecimento verdadeiro é o ambiente de desenvolvimento e o conjunto completo de instruções que geraram os resultados. (tradução nossa)
+
+.footnote[
+-- J. B. Buckheit and D. L. Donoho, [ WaveLab and Reproducible Research](https://statweb.stanford.edu/~wavelab/Wavelab_850/wavelab.pdf), pg. 5
+]
+
+---
+# Replicabilidade *versus* Reprodutibilidade
+
+- Replicabilidade (Replicável): Mesmas descobertas científicas utilizando investigadores, métodos, dados, equipamentos e protocolos independentes
+
+- Reprodutibilidade (Reprodutível): Mesmas descobertas científicas utilizando investigadores independentes porém os mesmos métodos, dados, equipamentos e protocolos
+
+---
+# Open Policy Analysis (OPA)
+
+&gt; A Open Policy Analysis (OPA) é uma abordagem para condução de análise de políticas públicas que envolve disponibilizar dados, códigos, materiais e documentação das decisões metodológicas de forma livre para facilitar a colaboração, discussão e reutilização. A OPA adapta e aplica ferramentas, métodos e práticas simples e versáteis, comumente usadas para transparência e reprodutibilidade em pesquisas científicas. (tradução nossa)
+
+.footnote[
+-- Berkeley Initiative for Transparency in the Social Sciences, [Guidelines for OPA](https://www.bitss.org/wp-content/uploads/2019/03/OPA-Guidelines.pdf)
+]
+
+---
+# Open Policy Analysis (OPA)
+
+.center[
+&lt;img src="assets/img/open-policy-analysis.png" width="1919" /&gt;
+]
+
+.footnote[
+-- [Berkeley Initiative for Transparency in the Social Sciences](https://www.bitss.org/opa/)
+]
+
+---
+# OPA - Estudo de Caso - Despesa de pessoal
+
+.small[
+&gt; __[Lei de Responsabilidade Fiscal (LRF)](http://www.planalto.gov.br/ccivil_03/leis/lcp/lcp101.htm#art16)__
+&gt; 
+&gt; Art. 16. A criação, expansão ou aperfeiçoamento de ação governamental que acarrete aumento da despesa será acompanhado de:
+&gt; 
+&gt; I - estimativa do impacto orçamentário-financeiro no exercício em que deva entrar em vigor e nos dois subseqüentes;
+&gt; 
+&gt; [...]
+&gt; 
+&gt; § 2º A estimativa de que trata o inciso I do caput será acompanhada das premissas e metodologia de cálculo utilizadas.
+&gt; 
+&gt; [...]
+&gt; 
+&gt; Art. 17. Considera-se obrigatória de caráter continuado a despesa corrente derivada de lei, medida provisória ou ato administrativo normativo que fixem para o ente a obrigação legal de sua execução por um período superior a dois exercícios.
+&gt; 
+&gt; § 1º Os atos que criarem ou aumentarem despesa de que trata o caput deverão ser instruídos com a estimativa prevista no inciso I do art. 16 e demonstrar a origem dos recursos para seu custeio.
+&gt; 
+&gt; [...]
+&gt; 
+&gt; § 6º O disposto no § 1º não se aplica às despesas destinadas ao serviço da dívida nem ao reajustamento de remuneração de pessoal de que trata o inciso X do art. 37 da Constituição.
+]
+
+---
+# OPA - Estudo de Caso - Despesa de pessoal
+
+&gt; [...] a Secretaria de Estado de Planejamento e Gestão – Seplag – enviou a esta Casa ofício informando que o impacto orçamentário-financeiro decorrente da implementação da proposta será de R$ 1,1 bilhão para o exercício de 2020, de R$ 2,85 bilhões para o exercício de 2021 e de R$ 5,06 bilhões para o exercício de 2022.
+
+.footnote[
+-- Comissão de Fiscalização Financeira e Orçamentária (CFFO/ALMG), [Parecer 1º Turno PL Nº 1.451/2020](https://www.almg.gov.br/atividade_parlamentar/tramitacao_projetos/documento.html?a=2020&amp;n=1451&amp;tipoProjeto=PROJETO%20DE%20LEI&amp;s=PL&amp;link=%2Fproposicoes%2Fpesquisa%2Favancada%3Fexpr%3D%28PL.2020014510410%5Bcodi%5D%29%5Btxmt%5D%26pesqProp%3Dtrue)
+]
+
+---
+# OPA - Estudo de Caso - Previdência
+
+&lt;img src="assets/img/sigilo-reforma-previdencia.png" width="1803" /&gt;
+
+-- [Folha de São Paulo](https://www1.folha.uol.com.br/mercado/2019/04/governo-decreta-sigilo-sobre-estudos-que-embasam-reforma-da-previdencia.shtml)
+---
+# Ferramentas
+
+Nessa disciplina as principais ferramentas que vamos utilizar são:
+
+* [git](https://git-scm.com/) (2005)
+* [GitHub](https://github.com/)&lt;sup&gt;1&lt;/sup&gt; (2007)
+* [markdown](https://daringfireball.net/projects/markdown/) (2004)
+* [R](https://www.r-project.org/) (1993)
+* [Rstudio](https://rstudio.com/products/rstudio/)&lt;sup&gt;2&lt;/sup&gt; (2011)
+* [Make](https://www.gnu.org/software/make/)&lt;sup&gt;*&lt;/sup&gt; (1976)
+
+.footnote[
+[1] Desenvolvedor: 
+* GitHub, Inc. - 2008 até 2018
+* Microsoft Corporation - 2018 em diante
+
+[2] Desenvolvedor: 
+* RStudio, Inc. - 2009 até 2020
+* RStudio, PBC - 2020 em diante
+]
+
+---
+class: inverse, middle, center
+
+# Controle de versão
+
+---
+.center[
+&lt;img src="assets/img/599b8b80086355a7cd499f9d3e20d836.png" width="60%" /&gt;
+]
+
+---
+# Modelo mental
+
+* Sistema de arquivos é bidimensional:
+  * pasta ou diretório
+  * arquivo
+
+* Sistema de controle de versão é tridimensional:
+  * pasta ou diretório
+  * arquivo
+  * tempo
+
+---
+# Benefícios técnicos
+
+* Agrupar um conjunto de alterações logicamente relacionadas
+
+* Registrar indefinidamente o histórico de alterações com informações sobre:
+  * Autoria da alteração;
+  * Motivo alteração;
+  * Conteúdo da alteração.
+
+---
+# Benefícios sociotécnicos
+
+### Processo de comunicação
+
+&gt; Text is explicit. By forcing communication through a textual medium, you’re forcing people to better formulate their ideas.
+
+-- Zach Holman, [Chat Trumps Meetings](https://zachholman.com/posts/chat/)
+
+### Processo de colaboração
+  
+&gt; Because the core operation in GitHub is ‘diff’ — what are the differences between two pieces of text — it elevates “Show me” as a social norm. Expressing, clearly and comparably, where you think a particular piece of text could or should be changed for the better becomes a core operation.
+
+-- Clay Shirky, [How the Internet will (one day) transform government](http://blog.ted.com/further-reading-in-github/)
+
+---
+&lt;img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png" width="20%" /&gt;
+
+
+A Wikipedia [define](https://en.wikipedia.org/wiki/Git) git como
+
+&gt; Git é um sistema de controle de versões distribuído utilizado para registrar o histórico de alterações no código fonte de um programa durante o desenvolvimento de software. (tradução nossa)
+
+&lt;img src="assets/img/243c9bcd5d2405e9f699609fe7d02d38.png" alt="GitHubMark" width="90"/&gt;
+&lt;img src="assets/img/abe0b3324c0d1c50f4451b24dca8fa59.png" alt="GitHubLogo" width="110"/&gt;
+
+Já o GitHub é [definido](https://pt.wikipedia.org/wiki/GitHub) como
+
+&gt; GitHub é uma plataforma de hospedagem de código-fonte com controle de versão usando o Git. [...] além de promover fácil comunicação através de recursos que relatam problemas ou mesclam repositórios remotos (issues, pull request).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
