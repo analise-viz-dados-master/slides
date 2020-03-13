@@ -6,5 +6,6 @@ Links para os slides:
 
 * [Introdução](https://fjuniorr.github.io/eg-fjp_analise-visualizacao-dados_2020-01/01_intro)
 * [Processo de análise de dados](https://fjuniorr.github.io/eg-fjp_analise-visualizacao-dados_2020-01/02_analise-dados)
+* [Pesquisa reproduzível](https://fjuniorr.github.io/eg-fjp_analise-visualizacao-dados_2020-01/03_pesquisa-reproduzivel)
 
 O plano de ensino da disciplina está disponível [aqui](plano_ensino_2020-02-06.pdf).
