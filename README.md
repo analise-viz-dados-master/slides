@@ -4,8 +4,8 @@ O objetivo desta disciplina é apresentar ao aluno a utilização do ambiente co
 
 Links para os slides:
 
-* [Introdução](https://fjuniorr.github.io/eg-fjp_analise-visualizacao-dados_2020-01/01_intro)
-* [Processo de análise de dados](https://fjuniorr.github.io/eg-fjp_analise-visualizacao-dados_2020-01/02_analise-dados)
-* [Pesquisa reproduzível](https://fjuniorr.github.io/eg-fjp_analise-visualizacao-dados_2020-01/03_pesquisa-reproduzivel)
+* [Introdução](https://analise-viz-dados-master.github.io/slides/01_intro)
+* [Processo de análise de dados](https://analise-viz-dados-master.github.io/slides/02_analise-dados)
+* [Pesquisa reproduzível](https://analise-viz-dados-master.github.io/slides/03_pesquisa-reproduzivel)
 
 O plano de ensino da disciplina está disponível [aqui](plano_ensino_2020-02-06.pdf).
