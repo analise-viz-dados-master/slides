@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>Análise e visualização de dados com R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Francisco Alves" />
+    <script src="libs/header-attrs-2.1/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <link href="libs/countdown-0.3.5/countdown.css" rel="stylesheet" />
@@ -27,7 +28,7 @@ class: hide-logo
 
 # Fluxo de Análise de Dados
 
-&lt;img src="assets/img/f4c8792ce66637cca0b0b67d84e30212.png" width="1464" /&gt;
+![](assets/img/f4c8792ce66637cca0b0b67d84e30212.png)&lt;!-- --&gt;
 
 .footnote[
 H. Wickham (Aut), G. Grolemund (Aut), S. Batista (Tra), [R Para Data Science](https://www.amazon.com.br/Para-Data-Science-Hadley-Wickham/dp/8550803243/)
@@ -154,7 +155,7 @@ O objetivo é analisar dados tabulares e estatísticas descritivas para identifi
 
 O link para o quiz será disponibilizado em sala de aula.
 
-<div class="countdown" id="timer_5e6ba387" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5eb6cf44" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -178,6 +179,11 @@ class: hide-logo
 # Quarteto de Anscombe
 
 .center[
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+```
+
 ![](assets/img/anscombe-plots-all-1.png)&lt;!-- --&gt;
 ]
 
@@ -269,7 +275,7 @@ class: hide-logo
 &lt;table style="border-collapse:collapse; border:none;"&gt;
 &lt;tr&gt;
 &lt;th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; "&gt;&amp;nbsp;&lt;/th&gt;
-&lt;th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; "&gt;vl remuneracao liquida&lt;/th&gt;
+&lt;th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; "&gt;vl_remuneracao_liquida&lt;/th&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; "&gt;Predictors&lt;/td&gt;
@@ -415,6 +421,42 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
 })();</script>
 <style>
 .logo {
@@ -442,17 +484,6 @@ document
   .forEach(el => {
     el.innerHTML += '<div class="logo"></div>';
   });
-</script>
-
-<script>
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
 </script>
 
 <script>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>Análise e visualização de dados com R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Francisco Alves" />
+    <script src="libs/header-attrs-2.1/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/styles.css" type="text/css" />
@@ -58,7 +59,7 @@ class: center, middle, inverse, title-slide
 # Open Policy Analysis (OPA)
 
 .center[
-&lt;img src="assets/img/open-policy-analysis.png" width="1919" /&gt;
+![](assets/img/open-policy-analysis.png)&lt;!-- --&gt;
 ]
 
 .footnote[
@@ -102,9 +103,11 @@ class: center, middle, inverse, title-slide
 ---
 # OPA - Estudo de Caso - Previdência
 
-&lt;img src="assets/img/sigilo-reforma-previdencia.png" width="1803" /&gt;
+![](assets/img/sigilo-reforma-previdencia.png)&lt;!-- --&gt;
 
--- [Folha de São Paulo](https://www1.folha.uol.com.br/mercado/2019/04/governo-decreta-sigilo-sobre-estudos-que-embasam-reforma-da-previdencia.shtml)
+.footnote[
+-- [Folha de São Paulo](https://www1.folha.uol.com.br/mercado/2019/04/governo-decreta-sigilo-sobre-estudos-que-embasam-reforma-da-previdencia.shtml)]
+
 ---
 # Ferramentas
 
@@ -175,6 +178,8 @@ class: inverse, middle, center
 -- Clay Shirky, [How the Internet will (one day) transform government](http://blog.ted.com/further-reading-in-github/)
 
 ---
+# Controle de versão - Ferramentas
+
 &lt;img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png" width="20%" /&gt;
 
 
@@ -188,6 +193,10 @@ A Wikipedia [define](https://en.wikipedia.org/wiki/Git) git como
 Já o GitHub é [definido](https://pt.wikipedia.org/wiki/GitHub) como
 
 &gt; GitHub é uma plataforma de hospedagem de código-fonte com controle de versão usando o Git. [...] além de promover fácil comunicação através de recursos que relatam problemas ou mesclam repositórios remotos (issues, pull request).
+
+
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -230,9 +239,35 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
-
-<script>
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
 (function() {
   var links = document.getElementsByTagName('a');
   for (var i = 0; i < links.length; i++) {
@@ -240,8 +275,7 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
       links[i].target = '_blank';
     }
   }
-})();
-</script>
+})();</script>
 
 <script>
 slideshow._releaseMath = function(el) {
