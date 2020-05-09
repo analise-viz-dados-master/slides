@@ -101,7 +101,9 @@ knitr::include_graphics("assets/img/open-policy-analysis.png")
 knitr::include_graphics("assets/img/sigilo-reforma-previdencia.png")
 ```
 
--- [Folha de São Paulo](https://www1.folha.uol.com.br/mercado/2019/04/governo-decreta-sigilo-sobre-estudos-que-embasam-reforma-da-previdencia.shtml)
+.footnote[
+-- [Folha de São Paulo](https://www1.folha.uol.com.br/mercado/2019/04/governo-decreta-sigilo-sobre-estudos-que-embasam-reforma-da-previdencia.shtml)]
+
 ---
 # Ferramentas
 
@@ -174,6 +176,8 @@ knitr::include_graphics("assets/img/599b8b80086355a7cd499f9d3e20d836.png")
 -- Clay Shirky, [How the Internet will (one day) transform government](http://blog.ted.com/further-reading-in-github/)
 
 ---
+# Controle de versão - Ferramentas
+
 ```{r echo=FALSE, out.width='20%'}
 knitr::include_graphics("https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png")
 ```
