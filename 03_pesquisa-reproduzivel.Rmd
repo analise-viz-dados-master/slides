@@ -2,7 +2,7 @@
 title: "Análise e visualização de dados com R"
 subtitle: "Pesquisa reproduzível"
 author: "Francisco Alves"
-date: "2020/03/13"
+date: "2020/03/13 (Atualizado em 2020/05/09)"
 output: 
   xaringan::moon_reader:
     lib_dir: libs
@@ -194,6 +194,5 @@ Já o GitHub é [definido](https://pt.wikipedia.org/wiki/GitHub) como
 
 > GitHub é uma plataforma de hospedagem de código-fonte com controle de versão usando o Git. [...] além de promover fácil comunicação através de recursos que relatam problemas ou mesclam repositórios remotos (issues, pull request).
 
-
-
-
+---
+# Linguagens de marcação
