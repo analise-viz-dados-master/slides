@@ -1,0 +1,39 @@
+---
+title: "xxx"
+subtitle: "xxx"
+author: "Francisco Alves"
+date: "2020/05/09"
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default", "default-fonts", "assets/styles.css"]
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Atividade
+
+Para fixação dos conceitos apresentados, vamos realizar interações reais no github.
+
+Para isso será necessário que cada um crie uma conta na plataforma.
+
+1. Acesse https://github.com/
+2. Siga as instruções para criação da sua conta
+3. Preencha o formulário https://forms.gle/KitzEprqNnynHNJv9
+
+Aproveite para explorar a ferramenta: visite seu próprio perfil, inclua seus dados e sua foto de perfil, procure por perfis de pessoas conhecidas.
+
+---
+# Atividade
+
+Para iniciação ao github, vamos criar um repositório
+
+1. Crie um repositório chamado `r print("hello-world")`
+2. Escreva uma breve descrição
+3. Escolha a opção de iniciar o repositório com um arquivo README
+4. Faça o download dos arquivos para o seu computador.
+fixação dos conceitos apresentados, vamos realizar interações reais no github.
+
+Conteúdo adicional:
+https://guides.github.com/activities/hello-world/
