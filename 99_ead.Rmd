@@ -1,0 +1,38 @@
+---
+title: "Análise e visualização de dados com R"
+subtitle: "Estratégia EaD"
+author: "Francisco Alves"
+date: "2020/05"
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default", "default-fonts", "assets/styles.css"]
+---
+# Tópicos
+
+* Aulas online _vs_ aulas pré-gravadas
+
+---
+# Tópicos
+
+* ~~Aulas online~~ _vs_ aulas pré-gravadas
+
+--
+
+* Disponibilização das videoaulas semanalmente às segundas-feiras
+
+--
+
+* Exercícios práticos liberados às segundas-feiras junto com as videoaulas com prazo de entrega encerrado à meia-noite de cada domingo
+
+--
+
+* Cronograma
+  * 18/05 - videoaulas e exercícios (equivalente a 2 horas-aula)
+  * ...
+  * 03/08 - videoaulas (equivalente a 4 horas-aula)
+
+--
+
+* Atendimento síncrono, no  [Jitsi Meet](https://meet.jit.si/CSAP2020-R), no horário usual da aula mediante agendamento prévio
+  * Sexta feira 13:00 às 14:40
