@@ -13,7 +13,7 @@ Links para os [slides](https://analise-viz-dados-master.github.io/slides/) e [vi
     * [Slides](https://analise-viz-dados-master.github.io/slides/02_analise-dados)
 * Pesquisa reproduzível 
     * [Slides](https://analise-viz-dados-master.github.io/slides/03_pesquisa-reproduzivel)
-    * Videaulas
+    * Videoaulas
         * [Instalação e Configuração de Ferramentas](https://www.youtube.com/watch?v=R3S8azThMYU)
 
 O plano de ensino da disciplina, atualizado depois da adoção do formato EaD, está disponível [aqui](plano_ensino_2020-05-11.pdf).
