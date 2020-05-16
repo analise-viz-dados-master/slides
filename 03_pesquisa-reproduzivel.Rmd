@@ -127,6 +127,42 @@ Nessa disciplina as principais ferramentas que vamos utilizar são:
 ]
 
 ---
+# Ferramentas - Instalação e configuração
+
+Para substituição do Laboratório da FJP, vamos utilizar o RStudio Cloud.
+
+--
+
+Meu objetivo é evitar a obrigatoriedade de configuração do computador pessoal no início do processo de aprendizado.
+
+--
+
+No entanto, para aqueles que se sintam confortáveis, recomendo que façam a instalação e configuração dessas ferramentas em seus computadores pessoais antes do encerramento da disciplina.
+
+--
+
+Instruções para instalação e configuração estão disponíveis [aqui](https://github.com/analise-viz-dados-1sem-2020/forum-discussao/issues/1).
+
+--
+
+Para auxílio com problemas e dificuldades, crie um novo issue no [repositório de dúvidas](https://github.com/analise-viz-dados-1sem-2020/forum-discussao) da disciplina.
+
+---
+class: inverse, hide-logo
+
+# Atividade
+
+* Acesse <https://login.rstudio.cloud/register> e siga as instruções para criação da sua conta no Rstudio Cloud;
+
+* Siga [esse link](https://rstudio.cloud/spaces/45562/join?access_code=3WvpVq2sXWXIbw6tto%2F2A8oS%2FRwlceeuaHrWi2Ic) para participar da área de trabalho dessa disciplina no Rstudio Cloud.
+
+* Acesse <https://github.com/join> e siga as instruções para criação da sua conta no GitHub;
+
+* Preencha [esse formulário](https://forms.gle/KitzEprqNnynHNJv9);
+
+Aproveite para explorar a ferramenta: visite seu próprio perfil, inclua seus dados e sua foto de perfil, procure por perfis de pessoas conhecidas.
+
+---
 class: inverse, middle, center
 
 # Controle de versão
