@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 # Análise e visualização de dados com R
 ## Pesquisa reproduzível
 ### Francisco Alves
-### 2020/03/13 (Atualizado em 2020/05/09)
+### 2020-03-13 (Atualizado em 2020-05-17)
 
 ---
 
@@ -218,7 +218,6 @@ class: inverse, middle, center
 
 &lt;img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png" width="20%" /&gt;
 
-
 A Wikipedia [define](https://en.wikipedia.org/wiki/Git) git como
 
 &gt; Git é um sistema de controle de versões distribuído utilizado para registrar o histórico de alterações no código fonte de um programa durante o desenvolvimento de software. (tradução nossa)
@@ -231,7 +230,141 @@ Já o GitHub é [definido](https://pt.wikipedia.org/wiki/GitHub) como
 &gt; GitHub é uma plataforma de hospedagem de código-fonte com controle de versão usando o Git. [...] além de promover fácil comunicação através de recursos que relatam problemas ou mesclam repositórios remotos (issues, pull request).
 
 ---
-# Linguagens de marcação
+class: inverse, middle, center
+
+# abre parênteses
+
+---
+# Sistema Eletrônico de Informações (SEI)
+
+O SEI, desenvolvido pelo Tribunal Regional Federal da 4ª Região (TRF4), é um sistema de gestão de processos e documentos eletrônicos.
+
+&lt;img src="assets/img/sei-processo-eletronico.png" width="100%" /&gt;
+
+---
+# SEI++
+
+O SEI++ é uma extensão para os navegadores [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension) e [Google Chrome](https://developer.chrome.com/extensions) que adiciona algumas funcionalidades ao SEI, facilitando a navegação e a utilização do mesmo. 
+
+--
+
+O SEI++ é um projeto desenvolvido pela comunidade que traz benefícios para diversos servidores públicos, sendo inclusive sugerido no [material de treinamento](http://planejamento.mg.gov.br/sites/default/files/documentos/gestao-governamental/gestao-de-ti/apresentacao_sei_avancado_0.pptx) do Curso SEI Avançado ofertado pela [SEPLAG](http://www.planejamento.mg.gov.br/pagina/gestao-governamental/sei/sistema-eletronico-de-informacoes). 
+
+--
+
+[Make things open: it makes things better](https://www.gov.uk/guidance/government-design-principles#make-things-open-it-makes-things-better)
+
+---
+class: inverse, middle, center
+
+# fecha parênteses
+
+---
+# Controle de versão - Mapa conceitual
+
+Vamos construir, de forma gradativa, um [mapa conceitual](https://pt.wikipedia.org/wiki/Mapa_conceitual) sobre o Git e Github utilizando como exemplo o [projeto SEI++](https://github.com/jonatasrs/sei). 
+
+Em um mapa conceitual:
+
+* Conceitos são representados por caixas;
+* Relações por setas;
+* Setas são rotuladas com frases de ligação que articulam o relacionamento entre os dois conceitos.
+
+A dois conceitos, conectados por uma frase de ligação chamamos de proposição. 
+
+---
+# Controle de versão - Mapa conceitual (1)
+
+.center[
+![](assets/img/github-mapa-conceitual-01.png)&lt;!-- --&gt;
+]
+
+---
+# Controle de versão - Mapa conceitual (2)
+
+.center[
+![](assets/img/github-mapa-conceitual-02.png)&lt;!-- --&gt;
+]
+
+---
+# Controle de versão - Mapa conceitual (3)
+
+.center[
+![](assets/img/github-mapa-conceitual-03.png)&lt;!-- --&gt;
+]
+
+---
+# Controle de versão - Mapa conceitual (4)
+
+.center[
+![](assets/img/github-mapa-conceitual-04.png)&lt;!-- --&gt;
+]
+
+---
+# Controle de versão - Mapa conceitual (5)
+
+.center[
+![](assets/img/github-mapa-conceitual-05.png)&lt;!-- --&gt;
+]
+
+---
+# Controle de versão - Mapa conceitual (6)
+
+.center[
+![](assets/img/github-mapa-conceitual-06.png)&lt;!-- --&gt;
+]
+
+---
+# Controle de versão - Mapa conceitual (7)
+
+.center[
+![](assets/img/github-mapa-conceitual-07.png)&lt;!-- --&gt;
+]
+
+---
+class: inverse, hide-logo
+
+# Atividade
+
+1. Visite &lt;https://github.com/new&gt;;
+1. Digite `hello-world` como nome do repositório;
+1. Selecione a opção __Initialize this repository with a README__;
+1. Clique em __Create repository__.
+
+&lt;img src="assets/img/github-create-repo.png" width="50%" /&gt;
+
+Faça o download do repositório para o seu computador e inspecione o conteúdo do arquivo `README.md` no Bloco de notas (Notepad) ou seu [editor de texto](https://en.wikipedia.org/wiki/Text_editor) preferido. 
+
+
+---
+class: inverse, middle, center
+
+# Documentos Dinâmicos
+
+---
+class: inverse, hide-logo
+
+# Atividade (Parte 1)
+
+1. Visite seu repositório `hello-word`
+1. Edite o arquivo `README.md` e insira o link para alguma análise de dados&lt;sup&gt;1&lt;/sup&gt; que chamou sua atenção e uma breve descrição&lt;sup&gt;2&lt;/sup&gt; sobre os atributos que chamaram sua atenção, sejam eles positivos ou negativos
+
+&lt;img src="assets/img/github-editor.gif" width="40%" /&gt;
+
+
+.footnote[
+[1] Visualização de dados, notícia de jornalismo de dados, artigo científico contendo análise de dados quantitativa, etc. A análise deve estar disponível para acesso.
+
+[2] Na descrição, utilize pelo menos três elementos diferentes do markdown. Consulte a documentação em [inglês](https://help.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github) ou [português](https://help.github.com/pt/github/writing-on-github/getting-started-with-writing-and-formatting-on-github).
+]
+
+---
+class: inverse, hide-logo
+
+# Atividade (Parte 2)
+
+1. Visite [esse issue](https://github.com/analise-viz-dados-1sem-2020/forum-discussao/issues/2) e deixe o link para o seu repositório `hello-word` nos comentários
+1. Visite __pelo menos um__ repositório `hello-word` de um colega, leia a análise e a descrição compartilhada, e crie uma issue com as suas impressões no repositório `hello-word` visitado
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
