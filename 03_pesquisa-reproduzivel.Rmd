@@ -360,6 +360,60 @@ class: inverse, middle, center
 # Documentos Dinâmicos
 
 ---
+# Linguagens de Marcação
+
+```{r echo=FALSE}
+knitr::include_graphics("assets/img/html.png")
+```
+
+.footnote[
+-- Fonte: [Khan Academy](https://www.khanacademy.org/computing/hour-of-code/hour-of-code-lessons/hour-of-html/a/quick-tip-html-tags)]
+
+---
+# Linguagens de Marcação - LaTeX
+
+```{r echo=FALSE, out.width='80%'}
+knitr::include_graphics("assets/img/latex-overleaf.png")
+```
+
+.footnote[
+-- Fonte: [Overleaf](https://www.overleaf.com/blog/641-try-out-overleaf-v2)
+]
+
+---
+# Linguagens de Marcação - Markdown
+
+```{r echo=FALSE, out.width='80%'}
+knitr::include_graphics("assets/img/markdown.png")
+```
+
+.footnote[
+-- Fonte: [Markdown Preview package](https://atom.io/packages/markdown-preview)
+]
+
+---
+# Documentos Dinâmicos - Rmarkdown
+
+```{r echo=FALSE}
+knitr::include_graphics("assets/img/dynamic-document.png")
+```
+
+.footnote[
+-- Fonte: [Exemplo Documento Dinâmico](https://github.com/analise-viz-dados-master/ex-documento-dinamico/)
+]
+
+---
+# Documentos Dinâmicos - Rmarkdown
+
+```{r echo=FALSE, out.width='80%'}
+knitr::include_graphics("assets/img/rmarkdown.png")
+```
+
+.footnote[
+-- Fonte: [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/rmarkdown-process.html)
+]
+
+---
 class: inverse, hide-logo
 
 # Atividade (Parte 1)
