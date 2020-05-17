@@ -32,4 +32,6 @@ __Se o atendimento não for mais necessário, cancele o compromisso no seu calen
 
 Os 30 pontos de exercícios práticos em sala de aula serão distribuídos com base na entrega das atividades presentes nas videoaulas. As duplas previamente formadas não serão mais utilizadas para essas atividades.
 
+Somente serão consideradas para fins de pontuação as atividades entregues até meia-noite de domingo da semana da aula.
+
 Detalhes sobre os trabalhos em grupo serão repassados em seu devido tempo.
