@@ -6,7 +6,7 @@ Links para os [slides](https://analise-viz-dados-master.github.io/slides/) e [vi
 
 * Estratégia EaD
     * [Slides](https://analise-viz-dados-master.github.io/slides/99_ead)
-    * [Videoaula](https://www.youtube.com/watch?v=8SCUW1D1ClA)
+    * [Videoaula](https://www.youtube.com/watch?v=8SCUW1D1ClA) - Aula 22/05
 * Introdução
     * [Slides](https://analise-viz-dados-master.github.io/slides/01_intro)
 * Processo de análise de dados 
@@ -14,8 +14,8 @@ Links para os [slides](https://analise-viz-dados-master.github.io/slides/) e [vi
 * Pesquisa reproduzível 
     * [Slides](https://analise-viz-dados-master.github.io/slides/03_pesquisa-reproduzivel)
     * Videoaulas
-        * [Instalação e Configuração de Ferramentas](https://www.youtube.com/watch?v=R3S8azThMYU)
-        * [Controle de Versão](https://www.youtube.com/watch?v=mDYoTC6fJ8E)
-        * [Documentos Dinâmicos](https://www.youtube.com/watch?v=gHN4Dw4mx7o)
+        * [Instalação e Configuração de Ferramentas](https://www.youtube.com/watch?v=R3S8azThMYU) - Aula 22/05
+        * [Controle de Versão](https://www.youtube.com/watch?v=mDYoTC6fJ8E) - Aula 22/05
+        * [Documentos Dinâmicos](https://www.youtube.com/watch?v=gHN4Dw4mx7o) - Aula 22/05
 
 O plano de ensino da disciplina, atualizado depois da adoção do formato EaD, está disponível [aqui](plano_ensino_2020-05-11.pdf).
