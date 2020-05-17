@@ -1,8 +1,10 @@
-# Tópicos Especiais em Administração Pública I - Análise e visualização de dados com R - Fundação João Pinheiro
+# Análise e visualização de dados com R
 
-O objetivo desta disciplina é apresentar ao aluno a utilização do ambiente computacional R para manipulação e visualização de dados, com foco em dados tabulares, utilizando práticas de pesquisa reproduzível. O enfoque não é a utilização do R para fins de modelagem estatística, no entanto, conceitos básicos como estatísticas descritivas e distribuições de probabilidade serão utilizados para análise e interpretação de bases de dados reais. Essa disciplina não assume conhecimento prévio em programação. Ao final, espera-se que o aluno tenha desenvolvido habilidades computacionais úteis para análise de dados.
+O plano de ensino da disciplina, atualizado depois da adoção do formato EaD e contendo o cronograma de liberação das videoaulas, está disponível [aqui](plano_ensino_2020-05-11.pdf).
 
-Links para os [slides](https://analise-viz-dados-master.github.io/slides/) e [videoaulas](https://www.youtube.com/playlist?list=PLJ0lWggozkU3cuZdatszs2IFYB3hYUVyE):
+## Videoaulas
+
+O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no YouTube. Links para os [slides](https://analise-viz-dados-master.github.io/slides/) e [videoaulas](https://www.youtube.com/playlist?list=PLJ0lWggozkU3cuZdatszs2IFYB3hYUVyE):
 
 * Estratégia EaD
     * [Slides](https://analise-viz-dados-master.github.io/slides/99_ead)
@@ -18,4 +20,16 @@ Links para os [slides](https://analise-viz-dados-master.github.io/slides/) e [vi
         * [Controle de Versão](https://www.youtube.com/watch?v=mDYoTC6fJ8E) - Aula 22/05
         * [Documentos Dinâmicos](https://www.youtube.com/watch?v=gHN4Dw4mx7o) - Aula 22/05
 
-O plano de ensino da disciplina, atualizado depois da adoção do formato EaD, está disponível [aqui](plano_ensino_2020-05-11.pdf).
+## Dias, horários e local de atendimento
+
+Será ofertado atendimento síncrono no horário usual da aula (Sexta feira 13:00 às 14:40) para solução de dúvidas. 
+
+O atendimento será no [Jitsi Meet](https://meet.jit.si/CSAP2020-R) da disciplina, mediante agendamento prévio realizado [neste link](https://meetings.hubspot.com/fjunior-alves-oliveira).
+
+__Se o atendimento não for mais necessário, cancele o compromisso no seu calendário.__
+
+## Atividades avaliativas
+
+Os 30 pontos de exercícios práticos em sala de aula serão distribuídos com base na entrega das atividades presentes nas videoaulas. As duplas previamente formadas não serão mais utilizadas para essas atividades.
+
+Detalhes sobre os trabalhos em grupo serão repassados em seu devido tempo.
