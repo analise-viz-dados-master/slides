@@ -439,3 +439,157 @@ class: inverse, hide-logo
 
 1. Visite [esse issue](https://github.com/analise-viz-dados-1sem-2020/forum-discussao/issues/2) e deixe o link para o seu repositório `hello-word` nos comentários
 1. Visite __pelo menos um__ repositório `hello-word` de um colega, leia a análise e a descrição compartilhada, e crie uma issue com as suas impressões no repositório `hello-word` visitado
+
+---
+class: inverse, middle, center
+
+# R, Rstudio
+
+---
+# R & Rstudio
+
+```{r echo=FALSE, out.width='15%'}
+knitr::include_graphics("https://www.r-project.org/logo/Rlogo.svg")
+```
+
+> R é uma linguagem de programação e um ambiente interativo para análise de dados  ([tradução nossa](https://www.amazon.com.br/Interactive-Environment-Data-Analysis-Graphics/dp/053403313X)).
+
+
+```{r echo=FALSE, out.width='30%'}
+knitr::include_graphics("https://rstudio.com/wp-content/uploads/2018/10/RStudio-Logo-flat.svg")
+```
+
+> Rstudio é um ambiente de desenvolvimento integrado (IDE) para o R ([tradução nossa](https://en.wikipedia.org/wiki/RStudio))
+
+---
+class: inverse, middle, center
+
+# mão na massa
+
+---
+class: inverse, middle, center
+
+# Organização de Projetos
+
+---
+
+.center[
+```{r, out.width='40%'}
+knitr::include_graphics("https://imgs.xkcd.com/comics/documents.png")
+```
+]
+
+.footnote[
+Fonte: <https://xkcd.com/1459/>
+]
+
+---
+# Gerenciamento de arquivos
+
+Quais pastas e arquivos devem ser criados;
+
+Qual nome de cada pasta e arquivo;
+
+Em qual pasta armazenamos determinado arquivo e em qual arquivo armazenamos determindo conteúdo.
+
+---
+# Material de Referência
+
+### Bibliografia
+
+Marwick, Ben, Carl Boettiger, and Lincoln Mullen. [Packaging Data Analytical Work Reproducibly Using R (and Friends)](https://peerj.com/preprints/3192/). 2018.
+
+Gentzkow, Matthew, and Jesse Shapiro. [Code and Data for the Social Sciences: A Practitioner’s Guide](https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf). 2014.
+
+### Software
+
+[Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/)
+
+[ProjectTemplate](http://projecttemplate.net/index.html)
+
+---
+# Material de Referência - Rstudio Projects
+
+* [RStudio Support - Using Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
+* [O Zen do R - Rproj e diretórios](https://curso-r.github.io/zen-do-r/rproj-dir.html)
+* [Project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
+
+---
+class: inverse, middle, center
+
+# mão na massa
+
+---
+class: inverse, middle, center
+
+# Rstudio Cloud
+
+---
+class: inverse, middle, center
+
+# mão na massa
+
+---
+# Integração com git - erro
+
+```{r}
+knitr::include_graphics("assets/img/introduce-yourself-to-git-error.png")
+```
+
+---
+# Integração com git - solução
+
+```{r}
+knitr::include_graphics("assets/img/introduce-yourself-to-git-solution.png")
+```
+
+---
+# Integração com git
+
+Toda vez que você criar um novo projeto vai ser necessário executar os comandos acima. 
+
+Isso é um pouco [irritante](https://mine-cetinkaya-rundel.github.io/rstudio-cloud-webinar/rstudio-cloud.html#46), mas já está no radar de [quem pode resolver](https://community.rstudio.com/t/introducing-yourself-to-git-in-rstudio-cloud/24959). 
+
+Enquanto isso:
+
+
+```sh
+git config user.name "John Doe"
+git config user.email "john.doe@gmail.com"
+```
+
+---
+class: inverse, hide-logo
+
+# Atividade
+
+Todos vocês deveriam ter recebido um convite para participar da organização [analise-viz-dados-1sem-2020](https://github.com/analise-viz-dados-1sem-2020) e para colaborar em um repositório individual `hw-rstudio-project-<github-user>`. 
+
+1. Crie um novo projeto, no Rstudio Cloud ou localmente, a partir do seu repositório `hw-rstudio-project-<github-user>`
+```{r echo=FALSE, out.width='50%'}
+knitr::include_graphics("assets/img/rstudio-cloud-new-project-git-repo.png")
+```
+
+1. Substitua o meu primeiro nome pelo seu na linha 5 do arquivo `hw-rstudio-project.R`
+1. Execute o script e avalie a visualização `figures/nomes-decada.pdf`
+1. Faça commit de todos os arquivos alterados (ie. `hw-rstudio-project.R` e `figures/nomes-decada.pdf`)
+1. Faça push dos commits
+
+A entrega da atividade é o commit registrado no Github com alteração no script e na visualização. O uso do Rstudio Cloud é opcional.
+
+---
+class: inverse, middle, center
+
+# Instalação local
+
+---
+# Instruções
+
+Instruções para instalação e configuração estão disponíveis [aqui](https://github.com/analise-viz-dados-1sem-2020/forum-discussao/issues/1). (Agora de verdade &#x1F605;)
+
+Para auxílio com problemas e dificuldades, crie um novo issue no [repositório de dúvidas](https://github.com/analise-viz-dados-1sem-2020/forum-discussao) da disciplina. Um colega pode ter tido a mesma dúvida que você.
+
+---
+class: inverse, middle, center
+
+# mão na massa
