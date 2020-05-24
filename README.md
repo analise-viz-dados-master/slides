@@ -19,6 +19,10 @@ O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no You
         * [Instalação e Configuração de Ferramentas](https://www.youtube.com/watch?v=R3S8azThMYU) - Aula 22/05
         * [Controle de Versão](https://www.youtube.com/watch?v=mDYoTC6fJ8E) - Aula 22/05
         * [Documentos Dinâmicos](https://www.youtube.com/watch?v=gHN4Dw4mx7o) - Aula 22/05
+        * [R & Rstudio](https://www.youtube.com/watch?v=jUQ3LymTHhc) - Aula 29/05
+        * [Organização de projetos](https://www.youtube.com/watch?v=0xNtq0adKbA) - Aula 29/05
+        * [Rstudio Cloud](https://www.youtube.com/watch?v=eZHEwo81758) - Aula 29/05
+        * [Rstudio Local](https://www.youtube.com/watch?v=Ra8pFY1P4zU) - Aula 29/05
 
 ## Dias, horários e local de atendimento
 
