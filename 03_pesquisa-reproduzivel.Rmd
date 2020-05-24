@@ -559,6 +559,23 @@ git config user.email "john.doe@gmail.com"
 ```
 
 ---
+class: inverse, middle, center
+
+# Instalação local
+
+---
+# Instruções
+
+Instruções para instalação e configuração estão disponíveis [aqui](https://github.com/analise-viz-dados-1sem-2020/forum-discussao/issues/1). (Agora de verdade &#x1F605;)
+
+Para auxílio com problemas e dificuldades, crie um novo issue no [repositório de dúvidas](https://github.com/analise-viz-dados-1sem-2020/forum-discussao) da disciplina. Um colega pode ter tido a mesma dúvida que você.
+
+---
+class: inverse, middle, center
+
+# mão na massa
+
+---
 class: inverse, hide-logo
 
 # Atividade
@@ -576,20 +593,3 @@ knitr::include_graphics("assets/img/rstudio-cloud-new-project-git-repo.png")
 1. Faça push dos commits
 
 A entrega da atividade é o commit registrado no Github com alteração no script e na visualização. O uso do Rstudio Cloud é opcional.
-
----
-class: inverse, middle, center
-
-# Instalação local
-
----
-# Instruções
-
-Instruções para instalação e configuração estão disponíveis [aqui](https://github.com/analise-viz-dados-1sem-2020/forum-discussao/issues/1). (Agora de verdade &#x1F605;)
-
-Para auxílio com problemas e dificuldades, crie um novo issue no [repositório de dúvidas](https://github.com/analise-viz-dados-1sem-2020/forum-discussao) da disciplina. Um colega pode ter tido a mesma dúvida que você.
-
----
-class: inverse, middle, center
-
-# mão na massa
