@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Análise e visualização de dados com R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Francisco Alves" />
+    <meta name="date" content="2020-05-31" />
+    <script src="libs/header-attrs-2.1/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Análise e visualização de dados com R
+## Introdução à programação
+### Francisco Alves
+### 2020-05-31
+
+---
+
+class: inverse, middle, center
+
+# Pacotes
+
+
+
+---
+
+![](assets/img/packages01.png)&lt;!-- --&gt;
+
+.footnote[
+-- Garrett Grolemund, [Master the Tidyverse](https://github.com/rstudio-education/master-the-tidyverse-instructors)
+]
+
+---
+
+![](assets/img/packages02.png)&lt;!-- --&gt;
+
+.footnote[
+-- Garrett Grolemund, [Master the Tidyverse](https://github.com/rstudio-education/master-the-tidyverse-instructors)
+]
+
+---
+
+![](assets/img/packages03.png)&lt;!-- --&gt;
+
+.footnote[
+-- Garrett Grolemund, [Master the Tidyverse](https://github.com/rstudio-education/master-the-tidyverse-instructors)
+]
+
+---
+
+![](assets/img/packages04.png)&lt;!-- --&gt;
+
+
+[The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/web/packages/index.html)
+
+.footnote[
+-- Garrett Grolemund, [Master the Tidyverse](https://github.com/rstudio-education/master-the-tidyverse-instructors)
+]
+
+---
+# Usando pacotes
+
+```r
+install.packages("foo")
+```
+
+* Download do código fonte do pacote para o seu computador
+  * 1 x por computador
+
+```r
+library("foo")
+```
+
+* Ativa o pacote para utilização
+  * 1 x por sessão 
+
+.footnote[
+-- Garrett Grolemund, [Master the Tidyverse](https://github.com/rstudio-education/master-the-tidyverse-instructors)
+]
+
+---
+class: inverse, middle, center
+
+# Obtendo ajuda
+
+---
+# Principais fontes
+
+* Documentação
+* Google
+* Terceiros
+
+---
+# Documentação
+
+```r
+?plot
+?source
+
+?`&lt;-`
+?`*`
+?`:`
+
+help("&lt;-")
+help("plot")
+```
+
+&lt;img src="assets/img/help.png" width="75%" /&gt;
+
+---
+
+.center[
+&lt;img src="https://raw.githubusercontent.com/thepracticaldev/orly-full-res/master/googlingtheerrormessage-big.png" width="75%" /&gt;
+]
+
+---
+# Principais fontes
+
+* [Stack Overflow](https://stackoverflow.com/) (e [Stack Exchange](https://stackexchange.com/))
+* [RStudio Community](https://community.rstudio.com/)
+* [GitHub](https://github.com/)
+
+---
+# Expressões de busca
+
+* Inglês é língua franca
+* Remova os elementos específicos da sua situação
+
+---
+# Terceiros
+
+* Meu objetivo com esses slides é apresentar algumas estratégias que vão facilitar o oferecimento de auxílio por mim, pelos seus colegas e pela comunidade!
+
+* No entanto, articular um problema é difícil! __Nunca deixe de perguntar__.
+
+---
+# O que deu errado?
+
+.pull-left[
+![](assets/img/pudim.gif)&lt;!-- --&gt;
+]
+.pull-right[
+&gt; Socorro! Meu pudim deu errado!
+
+vs
+
+&gt; Socorro! Meu pudim deu errado!
+&gt; 
+&gt; Eu segui essa receita.
+]
+
+.footnote[
+-- Andrew Heiss (@andrewheiss), [Twitter](https://twitter.com/andrewheiss/status/1264636725617479680?s=20)
+]
+
+---
+# Fazendo perguntas
+
+Antes de perguntar, procure para ter certeza que sua pergunta já não foi respondida.
+
+1. Resuma o problema
+  * Inclua detalhes sobre o seu objetivo
+  * Descreva os resultados atuais e os esperados
+  * Inclua mensagens de erro
+2. Descreva o que você já tentou
+  * Mostre o que você já tentou e o motivo que isso não resolveu seu problema. 
+3. Mostre um pouco de código
+  * Quando for apropriado, compartilhe uma quantidade mínima de código no qual os [outros possam usar para reproduzir o seu problema](https://stackoverflow.com/help/minimal-reproducible-example)
+
+Faça sua pergunta de forma pública para que outros possam se beneficiar da solução.
+
+.footnote[
+Stack Overflow, [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask)
+]
+
+---
+# Wisdom of the Ancients
+
+.center[
+![](https://imgs.xkcd.com/comics/wisdom_of_the_ancients.png)&lt;!-- --&gt;
+]
+
+.footnote[
+Fonte: https://xkcd.com/979/
+]
+
+---
+# Frustração
+
+&gt; Frustration is natural when you start programming in R, because it is such a stickler for punctuation, and even one character out of place will cause it to complain. But while you should expect to be a little frustrated, take comfort in that it’s both typical and temporary: it happens to everyone, and the only way to get over it is to keep trying.
+
+.footnote[
+Wickham, Hadley, and Garrett Grolemund. 2017. [R for Data Science](https://r4ds.had.co.nz/workflow-basics.html)
+]
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
