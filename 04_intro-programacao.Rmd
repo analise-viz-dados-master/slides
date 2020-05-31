@@ -202,4 +202,27 @@ Fonte: https://xkcd.com/979/
 .footnote[
 Wickham, Hadley, and Garrett Grolemund. 2017. [R for Data Science](https://r4ds.had.co.nz/workflow-basics.html)
 ]
+---
+class: inverse, middle, center
+
+# Conceitos básicos
+
+---
+class: inverse, middle, center
+
+# mão na massa
+
+---
+class: inverse, hide-logo
+
+# Atividade
+ 
+Todos devem receber um convite para colaborar no repositório `hw01-intro-programacao-<github-user>`. A entrega da atividade são os commits registrados no GitHub.
+ 
+1. Lendo a documentação da função `read.csv`, descubra como ler corretamente o arquivo `data-raw/notificacoes-covid19-mg.csv` que utiliza `;` como separador de colunas e modifique o script `hw01-introducao-programacao.R` de forma apropriada;
+1. Pesquisando no google, descubra um pacote, fora do R base, que permita a leitura correta do arquivo `data-raw/notificacoes-covid19-mg.csv`;
+1. Crie um novo script que faz a mesma agregação do  `hw01-introducao-programacao.R`, mas utiliza uma função do pacote pesquisado no lugar da função `read.csv` para importação dos dados;
+1. Insira um comentário no script com a [URL do pacote no CRAN](https://cran.r-project.org/web/packages/dplyr/index.html);
+1. Insira uma [descrição no seu commit](https://github.com/analise-viz-dados-1sem-2020/hw-rstudio-project-ana-mendesr/commit/5ba777da28d11d2becb0ceea7339268f4cb030d3#commitcomment-39487943) contando eventuais dificuldades no seu processo de busca. Insira pelo menos sua última expressão de busca pesquisada.
+
 
