@@ -23,6 +23,12 @@ O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no You
         * [Organização de projetos](https://www.youtube.com/watch?v=0xNtq0adKbA) - Aula 29/05
         * [Rstudio Cloud](https://www.youtube.com/watch?v=eZHEwo81758) - Aula 29/05
         * [Rstudio Local](https://www.youtube.com/watch?v=Ra8pFY1P4zU) - Aula 29/05
+* Introdução à Programação
+    * [Slides](https://analise-viz-dados-master.github.io/slides/04_intro-programacao.html)
+    * Videoaulas
+        * [Pacotes](https://www.youtube.com/watch?v=KMeqjCJQTbI) - Aula 05/06
+        * [Obtendo Ajuda](https://www.youtube.com/watch?v=EqpCRTR_sew) - Aula 05/06
+        * [Conceitos Básicos](https://www.youtube.com/watch?v=3DDbx0aC0L0) - Aula 05/06
 
 ## Dias, horários e local de atendimento
 
