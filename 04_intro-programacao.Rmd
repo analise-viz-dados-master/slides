@@ -2,7 +2,7 @@
 title: "Análise e visualização de dados com R"
 subtitle: "Introdução à programação"
 author: "Francisco Alves"
-date: '`r paste0("2020-05-31")`'
+date: '`r paste0("2020-05-31 (Atualizado em ", Sys.Date(), ")")`'
 output: 
   xaringan::moon_reader:
     lib_dir: libs
