@@ -7,6 +7,8 @@ output:
   xaringan::moon_reader:
     lib_dir: libs
     css: ["default", "default-fonts", "assets/styles.css"]
+    nature:
+      highlightLines: true
 ---
 class: inverse, middle, center
 
@@ -14,6 +16,7 @@ class: inverse, middle, center
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library("readr"); library("dplyr")
 ```
 
 ---
@@ -224,5 +227,738 @@ Todos devem receber um convite para colaborar no repositório `hw01-intro-progra
 1. Crie um novo script que faz a mesma agregação do  `hw01-introducao-programacao.R`, mas utiliza uma função do pacote pesquisado no lugar da função `read.csv` para importação dos dados;
 1. Insira um comentário no script com a [URL do pacote no CRAN](https://cran.r-project.org/web/packages/dplyr/index.html);
 1. Insira uma [descrição no seu commit](https://github.com/analise-viz-dados-1sem-2020/hw-rstudio-project-ana-mendesr/commit/5ba777da28d11d2becb0ceea7339268f4cb030d3#commitcomment-39487943) contando eventuais dificuldades no seu processo de busca. Insira pelo menos sua última expressão de busca pesquisada.
+---
+class: inverse, middle, center
+
+# Conceitos básicos (Parte 2)
+
+---
+class: inverse, middle, center
+
+# mão na massa
+
+---
+class: inverse, middle, center
+
+# Composição de funções
+
+---
+# h(x) = gof = g(f(x))
+
+* Chamadas aninhadas
+
+```r
+sum(log(seq(10)))
+#> [1] 15.10441
+```
+
+--
+
+* Variáveis intermediárias
+
+``` r
+seq10 <- seq(10)
+log10 <- log(seq10)
+sum(log10)
+#> [1] 15.10441
+```
+
+--
+
+* [Operador pipe](https://cran.r-project.org/web/packages/magrittr/) `%>%`
+
+``` r
+library(magrittr)
+
+10 %>% 
+  seq() %>% 
+  log() %>% 
+  sum()
+#> [1] 15.10441
+```
+---
+# Equivalência aproximada pipe
+
+* `x %>% f()` $\approx$ `f(x)`
+
+* `x %>% f(y)` $\approx$ `f(x, y)`
+
+* `x %>% f() %>% g()` $\approx$ `g(f(x))`
+
+---
+# Um exemplo artificial
+
+* Como fazer um bolo?
+
+.footnote[
+-- Exemplo adaptado de [Material Curso-R - O operador pipe](https://material.curso-r.com/pipe/)
+]
+
+---
+# Chamadas aninhadas
+
+```{r, eval=FALSE, echo=TRUE}
+bolo <- esfrie(
+          asse(
+            coloque(
+              misture(
+                adicione(
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+                  , "farinha", ponto = "macio")
+              )
+              , "forma", tipo = "grande", untada = TRUE)
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (1)
+
+```{r, eval=FALSE, echo=TRUE}
+bolo <- esfrie(
+          asse(
+            coloque(
+              misture(
+                adicione(
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente") #<<
+                  , "farinha", ponto = "macio")
+              )
+              , "forma", tipo = "grande", untada = TRUE)
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (2)
+
+```{r, eval=FALSE, echo=TRUE}
+bolo <- esfrie(
+          asse(
+            coloque(
+              misture(
+                adicione( #<<
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente") 
+                  , "farinha", ponto = "macio") #<<
+              )
+              , "forma", tipo = "grande", untada = TRUE)
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (3)
+
+```{r, eval=FALSE, echo=TRUE}
+bolo <- esfrie(
+          asse(
+            coloque(
+              misture( #<<
+                adicione( 
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente") 
+                  , "farinha", ponto = "macio") 
+              ) #<<
+              , "forma", tipo = "grande", untada = TRUE)
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (4)
+
+```{r, eval=FALSE, echo=TRUE}
+bolo <- esfrie(
+          asse(
+            coloque( #<<
+              misture( 
+                adicione( 
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente") 
+                  , "farinha", ponto = "macio") 
+              ) 
+              , "forma", tipo = "grande", untada = TRUE) #<<
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (5)
+
+```{r, eval=FALSE, echo=TRUE}
+bolo <- esfrie(
+          asse( #<<
+            coloque( 
+              misture( 
+                adicione( 
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente") 
+                  , "farinha", ponto = "macio") 
+              ) 
+              , "forma", tipo = "grande", untada = TRUE) 
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180) #<<
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (6)
+
+```{r, eval=FALSE, echo=TRUE}
+bolo <- esfrie( #<<
+          asse( 
+            coloque( 
+              misture( 
+                adicione( 
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente") 
+                  , "farinha", ponto = "macio") 
+              ) 
+              , "forma", tipo = "grande", untada = TRUE) 
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180) 
+          , "geladeira", duracao = "20min") #<<
+```
+
+---
+# Variáveis intermediárias
+
+```{r, eval=FALSE, echo=TRUE}
+massa <- misture(
+           adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio")
+         )
 
 
+bolo <- esfrie(
+          asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min")
+```
+
+---
+# Variáveis intermediárias (1)
+
+```{r, eval=FALSE, echo=TRUE}
+massa <- misture(
+           adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente") #<<
+             , "farinha", ponto = "macio")
+         )
+
+
+bolo <- esfrie(
+          asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min")
+```
+
+
+---
+# Variáveis intermediárias (2)
+
+```{r, eval=FALSE, echo=TRUE}
+massa <- misture(
+           adicione( #<<
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio") #<<
+         )
+
+
+bolo <- esfrie(
+          asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min")
+```
+
+
+---
+# Variáveis intermediárias (3)
+
+```{r, eval=FALSE, echo=TRUE}
+massa <- misture( #<<
+           adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio")
+         ) #<<
+
+
+bolo <- esfrie(
+          asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min")
+```
+
+
+---
+# Variáveis intermediárias (4)
+
+```{r, eval=FALSE, echo=TRUE}
+massa <- misture(
+           adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio")
+         )
+
+
+bolo <- esfrie(
+          asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE) #<<
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min")
+```
+
+
+---
+# Variáveis intermediárias (5)
+
+```{r, eval=FALSE, echo=TRUE}
+massa <- misture(
+           adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio")
+         )
+
+
+bolo <- esfrie(
+          asse( #<<
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180) #<<
+            , "geladeira", duracao = "20min")
+```
+
+
+---
+# Variáveis intermediárias (6)
+
+```{r, eval=FALSE, echo=TRUE}
+massa <- misture(
+           adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio")
+         )
+
+
+bolo <- esfrie( #<<
+          asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min") #<<
+```
+
+
+---
+# Operador pipe
+
+```{r, eval=FALSE, echo=TRUE}
+c("água", "fermento", "leite", "óleo") %>%
+    coloque("recipiente") %>%
+    adicione("farinha", ponto = "macio") %>%
+    misture(duracao = "3min") %>%
+    coloque("forma", tipo = "grande", untada = TRUE) %>%
+    asse("forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180) %>%
+    esfrie("geladeira", duracao = "20min")
+```
+
+---
+# Um exemplo real
+
+* Quais os dez órgãos do executivo estadual que possuem os maiores salários?
+
+```{r, echo=FALSE, message=FALSE}
+df <- read_csv2("data-raw/servidoresMG_1219.csv")
+
+ipca <- 1.002192
+```
+
+--
+
+```{r}
+df %>%
+  select(orgao = descinst, vl_remuneracao_liquida = rem_pos) %>% 
+  mutate(vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) %>% 
+  group_by(orgao) %>%
+  summarize(
+    vl_mediana = median(vl_remuneracao_liquida_real),
+    n = n()
+  ) %>%
+  arrange(desc(vl_mediana)) %>%
+  filter(n > 10) %>%
+  head(10) %>% knitr::kable(format = "html")
+```
+
+
+---
+# Chamadas aninhadas
+
+```{r, eval=FALSE, echo=TRUE}
+head(
+  filter(
+    arrange(
+      summarize(
+        group_by(
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+    , n > 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (1)
+
+```{r, eval=FALSE, echo=TRUE}
+head(
+  filter(
+    arrange(
+      summarize(
+        group_by(
+          mutate(
+            select(df,                               #<<    
+                   orgao = descinst,                 #<<    
+                   vl_remuneracao_liquida = rem_pos) #<<
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) 
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+    , n > 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (2)
+
+```{r, eval=FALSE, echo=TRUE}
+head(
+  filter(
+    arrange(
+      summarize(
+        group_by(
+          mutate( #<<
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) #<<
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+    , n > 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (3)
+
+```{r, eval=FALSE, echo=TRUE}
+head(
+  filter(
+    arrange(
+      summarize(
+        group_by( #<<
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao) #<<
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+    , n > 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (4)
+
+```{r, eval=FALSE, echo=TRUE}
+head(
+  filter(
+    arrange(
+      summarize( #<<
+        group_by(
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real), #<<
+          n = n()) #<<
+      , desc(vl_mediana))
+    , n > 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (5)
+
+```{r, eval=FALSE, echo=TRUE}
+head(
+  filter(
+    arrange( #<<
+      summarize(
+        group_by(
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana)) #<<
+    , n > 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (6)
+
+```{r, eval=FALSE, echo=TRUE}
+head(
+  filter( #<<
+    arrange(
+      summarize(
+        group_by(
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+    , n > 10) #<<
+  , 10)
+```
+
+---
+# Chamadas aninhadas (7)
+
+```{r, eval=FALSE, echo=TRUE}
+head( #<<
+  filter(
+    arrange(
+      summarize(
+        group_by(
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+    , n > 10)
+  , 10) #<<
+```
+
+---
+# Variáveis intermediárias
+
+```{r, eval=FALSE, echo=TRUE}
+df_orgao <- group_by(
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head(
+  filter(
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+    , n > 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (1)
+
+```{r, eval=FALSE, echo=TRUE}
+df_orgao <- group_by(
+  mutate(
+    select(df, #<<
+           orgao = descinst, #<<
+           vl_remuneracao_liquida = rem_pos) #<<
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head(
+  filter(
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+    , n > 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (2)
+
+```{r, eval=FALSE, echo=TRUE}
+df_orgao <- group_by(
+  mutate( #<<
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) #<<
+  , orgao)
+
+head(
+  filter(
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+    , n > 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (3)
+
+```{r, eval=FALSE, echo=TRUE}
+df_orgao <- group_by( #<<
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao) #<<
+
+head(
+  filter(
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+    , n > 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (4)
+
+```{r, eval=FALSE, echo=TRUE}
+df_orgao <- group_by(
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head(
+  filter(
+    arrange(
+      summarize(df_orgao, #<<
+                vl_mediana = median(vl_remuneracao_liquida_real), #<<
+                n = n()) #<<
+      , desc(vl_mediana))
+    , n > 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (5)
+
+```{r, eval=FALSE, echo=TRUE}
+df_orgao <- group_by(
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head(
+  filter(
+    arrange( #<<
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana)) #<<
+    , n > 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (6)
+
+```{r, eval=FALSE, echo=TRUE}
+df_orgao <- group_by(
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head(
+  filter( #<<
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+    , n > 10) #<<
+  , 10)
+```
+
+---
+# Variáveis intermediárias (7)
+
+```{r, eval=FALSE, echo=TRUE}
+df_orgao <- group_by(
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head( #<<
+  filter(
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+    , n > 10)
+  , 10) #<<
+```
+
+---
+# Operador pipe
+
+```{r, eval=FALSE, echo=TRUE}
+df %>%
+  select(orgao = descinst, 
+         vl_remuneracao_liquida = rem_pos) %>% 
+  mutate(vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) %>% 
+  group_by(orgao) %>%
+  summarize(
+    vl_mediana = median(vl_remuneracao_liquida_real),
+    n = n()) %>%
+  arrange(desc(vl_mediana)) %>%
+  filter(n > 10) %>%
+  head(10)
+```

@@ -219,12 +219,823 @@ Todos devem receber um convite para colaborar no repositório `hw01-intro-progra
 1. Crie um novo script que faz a mesma agregação do  `hw01-introducao-programacao.R`, mas utiliza uma função do pacote pesquisado no lugar da função `read.csv` para importação dos dados;
 1. Insira um comentário no script com a [URL do pacote no CRAN](https://cran.r-project.org/web/packages/dplyr/index.html);
 1. Insira uma [descrição no seu commit](https://github.com/analise-viz-dados-1sem-2020/hw-rstudio-project-ana-mendesr/commit/5ba777da28d11d2becb0ceea7339268f4cb030d3#commitcomment-39487943) contando eventuais dificuldades no seu processo de busca. Insira pelo menos sua última expressão de busca pesquisada.
+---
+class: inverse, middle, center
+
+# Conceitos básicos (Parte 2)
+
+---
+class: inverse, middle, center
+
+# mão na massa
+
+---
+class: inverse, middle, center
+
+# Composição de funções
+
+---
+# h(x) = gof = g(f(x))
+
+* Chamadas aninhadas
+
+```r
+sum(log(seq(10)))
+#&gt; [1] 15.10441
+```
+
+--
+
+* Variáveis intermediárias
+
+``` r
+seq10 &lt;- seq(10)
+log10 &lt;- log(seq10)
+sum(log10)
+#&gt; [1] 15.10441
+```
+
+--
+
+* [Operador pipe](https://cran.r-project.org/web/packages/magrittr/) `%&gt;%`
+
+``` r
+library(magrittr)
+
+10 %&gt;% 
+  seq() %&gt;% 
+  log() %&gt;% 
+  sum()
+#&gt; [1] 15.10441
+```
+---
+# Equivalência aproximada pipe
+
+* `x %&gt;% f()` `\(\approx\)` `f(x)`
+
+* `x %&gt;% f(y)` `\(\approx\)` `f(x, y)`
+
+* `x %&gt;% f() %&gt;% g()` `\(\approx\)` `g(f(x))`
+
+---
+# Um exemplo artificial
+
+* Como fazer um bolo?
+
+.footnote[
+-- Exemplo adaptado de [Material Curso-R - O operador pipe](https://material.curso-r.com/pipe/)
+]
+
+---
+# Chamadas aninhadas
 
 
+```r
+bolo &lt;- esfrie(
+          asse(
+            coloque(
+              misture(
+                adicione(
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+                  , "farinha", ponto = "macio")
+              )
+              , "forma", tipo = "grande", untada = TRUE)
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (1)
+
+
+```r
+bolo &lt;- esfrie(
+          asse(
+            coloque(
+              misture(
+                adicione(
+*                 coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+                  , "farinha", ponto = "macio")
+              )
+              , "forma", tipo = "grande", untada = TRUE)
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (2)
+
+
+```r
+bolo &lt;- esfrie(
+          asse(
+            coloque(
+              misture(
+*               adicione(
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente") 
+*                 , "farinha", ponto = "macio")
+              )
+              , "forma", tipo = "grande", untada = TRUE)
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (3)
+
+
+```r
+bolo &lt;- esfrie(
+          asse(
+            coloque(
+*             misture(
+                adicione( 
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente") 
+                  , "farinha", ponto = "macio") 
+*             )
+              , "forma", tipo = "grande", untada = TRUE)
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (4)
+
+
+```r
+bolo &lt;- esfrie(
+          asse(
+*           coloque(
+              misture( 
+                adicione( 
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente") 
+                  , "farinha", ponto = "macio") 
+              ) 
+*             , "forma", tipo = "grande", untada = TRUE)
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (5)
+
+
+```r
+bolo &lt;- esfrie(
+*         asse(
+            coloque( 
+              misture( 
+                adicione( 
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente") 
+                  , "farinha", ponto = "macio") 
+              ) 
+              , "forma", tipo = "grande", untada = TRUE) 
+*           , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+          , "geladeira", duracao = "20min")
+```
+
+---
+# Chamadas aninhadas (6)
+
+
+```r
+*bolo &lt;- esfrie(
+          asse( 
+            coloque( 
+              misture( 
+                adicione( 
+                  coloque(c("água", "fermento", "leite", "óleo"), "recipiente") 
+                  , "farinha", ponto = "macio") 
+              ) 
+              , "forma", tipo = "grande", untada = TRUE) 
+            , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180) 
+*         , "geladeira", duracao = "20min")
+```
+
+---
+# Variáveis intermediárias
+
+
+```r
+massa &lt;- misture(
+           adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio")
+         )
+
+
+bolo &lt;- esfrie(
+          asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min")
+```
+
+---
+# Variáveis intermediárias (1)
+
+
+```r
+massa &lt;- misture(
+           adicione(
+*            coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio")
+         )
+
+
+bolo &lt;- esfrie(
+          asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min")
+```
+
+
+---
+# Variáveis intermediárias (2)
+
+
+```r
+massa &lt;- misture(
+*          adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+*            , "farinha", ponto = "macio")
+         )
+
+
+bolo &lt;- esfrie(
+          asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min")
+```
+
+
+---
+# Variáveis intermediárias (3)
+
+
+```r
+*massa &lt;- misture(
+           adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio")
+*        )
+
+
+bolo &lt;- esfrie(
+          asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min")
+```
+
+
+---
+# Variáveis intermediárias (4)
+
+
+```r
+massa &lt;- misture(
+           adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio")
+         )
+
+
+bolo &lt;- esfrie(
+          asse(
+*           coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min")
+```
+
+
+---
+# Variáveis intermediárias (5)
+
+
+```r
+massa &lt;- misture(
+           adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio")
+         )
+
+
+bolo &lt;- esfrie(
+*         asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+*             , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+            , "geladeira", duracao = "20min")
+```
+
+
+---
+# Variáveis intermediárias (6)
+
+
+```r
+massa &lt;- misture(
+           adicione(
+             coloque(c("água", "fermento", "leite", "óleo"), "recipiente")
+             , "farinha", ponto = "macio")
+         )
+
+
+*bolo &lt;- esfrie(
+          asse(
+            coloque(massa, "forma", tipo = "grande", untada = TRUE)
+              , "forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180)
+*           , "geladeira", duracao = "20min")
+```
+
+
+---
+# Operador pipe
+
+
+```r
+c("água", "fermento", "leite", "óleo") %&gt;%
+    coloque("recipiente") %&gt;%
+    adicione("farinha", ponto = "macio") %&gt;%
+    misture(duracao = "3min") %&gt;%
+    coloque("forma", tipo = "grande", untada = TRUE) %&gt;%
+    asse("forno", duracao = "50min", pre_aquecido = TRUE, temperatura = 180) %&gt;%
+    esfrie("geladeira", duracao = "20min")
+```
+
+---
+# Um exemplo real
+
+* Quais os dez órgãos do executivo estadual que possuem os maiores salários?
+
+
+
+--
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; orgao &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; vl_mediana &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ADVOCACIA GERAL DO ESTADO &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29242.64 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 794 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; SECRETARIA DA FAZENDA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28705.02 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2918 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; CONTROLADORIA GERAL DO ESTADO &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19272.79 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 191 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FUNDACAO JOAO PINHEIRO &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13150.94 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 223 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FEAM FUNDACAO DO MEIO AMBIENTE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12978.59 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 104 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; IGAM INST DE GESTAO DAS AGUAS &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12780.12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 150 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; SECRETARIA DO MEIO AMBIENTE &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11557.99 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 830 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; IMA INST MINEIRO AGROPECUARIA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11395.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1353 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; IEF INST EST DE FLORESTAS &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10880.46 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 769 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ARSAE MG &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10836.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+# Chamadas aninhadas
+
+
+```r
+head(
+  filter(
+    arrange(
+      summarize(
+        group_by(
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (1)
+
+
+```r
+head(
+  filter(
+    arrange(
+      summarize(
+        group_by(
+          mutate(
+*           select(df,
+*                  orgao = descinst,
+*                  vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) 
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (2)
+
+
+```r
+head(
+  filter(
+    arrange(
+      summarize(
+        group_by(
+*         mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+*           , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (3)
+
+
+```r
+head(
+  filter(
+    arrange(
+      summarize(
+*       group_by(
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+*         , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (4)
+
+
+```r
+head(
+  filter(
+    arrange(
+*     summarize(
+        group_by(
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao)
+*       , vl_mediana = median(vl_remuneracao_liquida_real),
+*         n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (5)
+
+
+```r
+head(
+  filter(
+*   arrange(
+      summarize(
+        group_by(
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+*     , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (6)
+
+
+```r
+head(
+* filter(
+    arrange(
+      summarize(
+        group_by(
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+*   , n &gt; 10)
+  , 10)
+```
+
+---
+# Chamadas aninhadas (7)
+
+
+```r
+*head(
+  filter(
+    arrange(
+      summarize(
+        group_by(
+          mutate(
+            select(df,                                   
+                   orgao = descinst,                     
+                   vl_remuneracao_liquida = rem_pos)
+            , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+          , orgao)
+        , vl_mediana = median(vl_remuneracao_liquida_real),
+          n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+* , 10)
+```
+
+---
+# Variáveis intermediárias
+
+
+```r
+df_orgao &lt;- group_by(
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head(
+  filter(
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (1)
+
+
+```r
+df_orgao &lt;- group_by(
+  mutate(
+*   select(df,
+*          orgao = descinst,
+*          vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head(
+  filter(
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (2)
+
+
+```r
+df_orgao &lt;- group_by(
+* mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+*   , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head(
+  filter(
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (3)
+
+
+```r
+*df_orgao &lt;- group_by(
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+* , orgao)
+
+head(
+  filter(
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (4)
+
+
+```r
+df_orgao &lt;- group_by(
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head(
+  filter(
+    arrange(
+*     summarize(df_orgao,
+*               vl_mediana = median(vl_remuneracao_liquida_real),
+*               n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (5)
+
+
+```r
+df_orgao &lt;- group_by(
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head(
+  filter(
+*   arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+*     , desc(vl_mediana))
+    , n &gt; 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (6)
+
+
+```r
+df_orgao &lt;- group_by(
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+head(
+* filter(
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+*   , n &gt; 10)
+  , 10)
+```
+
+---
+# Variáveis intermediárias (7)
+
+
+```r
+df_orgao &lt;- group_by(
+  mutate(
+    select(df,
+           orgao = descinst,
+           vl_remuneracao_liquida = rem_pos)
+    , vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+  , orgao)
+
+*head(
+  filter(
+    arrange(
+      summarize(df_orgao,
+                vl_mediana = median(vl_remuneracao_liquida_real),
+                n = n())
+      , desc(vl_mediana))
+    , n &gt; 10)
+* , 10)
+```
+
+---
+# Operador pipe
+
+
+```r
+df %&gt;%
+  select(orgao = descinst, 
+         vl_remuneracao_liquida = rem_pos) %&gt;% 
+  mutate(vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) %&gt;% 
+  group_by(orgao) %&gt;%
+  summarize(
+    vl_mediana = median(vl_remuneracao_liquida_real),
+    n = n()) %&gt;%
+  arrange(desc(vl_mediana)) %&gt;%
+  filter(n &gt; 10) %&gt;%
+  head(10)
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script>var slideshow = remark.create();
+<script>var slideshow = remark.create({
+"highlightLines": true
+});
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
@@ -299,7 +1110,24 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
       links[i].target = '_blank';
     }
   }
-})();</script>
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 slideshow._releaseMath = function(el) {
