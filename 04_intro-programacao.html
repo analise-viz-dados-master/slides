@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 # Análise e visualização de dados com R
 ## Introdução à programação
 ### Francisco Alves
-### 2020-05-31 (Atualizado em 2020-06-07)
+### 2020-05-31 (Atualizado em 2020-06-08)
 
 ---
 
@@ -238,35 +238,45 @@ class: inverse, middle, center
 
 * Chamadas aninhadas
 
+
 ```r
-sum(log(seq(10)))
-#&gt; [1] 15.10441
+sum(sqrt(1:4))
+```
+
+```
+## [1] 6.146264
 ```
 
 --
 
 * Variáveis intermediárias
 
-``` r
-seq10 &lt;- seq(10)
-log10 &lt;- log(seq10)
-sum(log10)
-#&gt; [1] 15.10441
+
+```r
+raiz &lt;- sqrt(1:4)
+sum(raiz)
+```
+
+```
+## [1] 6.146264
 ```
 
 --
 
 * [Operador pipe](https://cran.r-project.org/web/packages/magrittr/) `%&gt;%`
 
-``` r
+
+```r
 library(magrittr)
 
-10 %&gt;% 
-  seq() %&gt;% 
-  log() %&gt;% 
+sqrt(1:4) %&gt;% 
   sum()
-#&gt; [1] 15.10441
 ```
+
+```
+## [1] 6.146264
+```
+
 ---
 # Equivalência aproximada pipe
 

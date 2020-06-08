@@ -247,35 +247,30 @@ class: inverse, middle, center
 
 * Chamadas aninhadas
 
-```r
-sum(log(seq(10)))
-#> [1] 15.10441
+```{r, echo=TRUE}
+sum(sqrt(1:4))
 ```
 
 --
 
 * Variáveis intermediárias
 
-``` r
-seq10 <- seq(10)
-log10 <- log(seq10)
-sum(log10)
-#> [1] 15.10441
+```{r, echo=TRUE}
+raiz <- sqrt(1:4)
+sum(raiz)
 ```
 
 --
 
 * [Operador pipe](https://cran.r-project.org/web/packages/magrittr/) `%>%`
 
-``` r
+```{r, echo=TRUE}
 library(magrittr)
 
-10 %>% 
-  seq() %>% 
-  log() %>% 
+sqrt(1:4) %>% 
   sum()
-#> [1] 15.10441
 ```
+
 ---
 # Equivalência aproximada pipe
 
