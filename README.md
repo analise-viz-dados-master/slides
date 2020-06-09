@@ -29,6 +29,8 @@ O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no You
         * [Pacotes](https://www.youtube.com/watch?v=KMeqjCJQTbI) - Aula 05/06
         * [Obtendo Ajuda](https://www.youtube.com/watch?v=EqpCRTR_sew) - Aula 05/06
         * [Conceitos Básicos](https://www.youtube.com/watch?v=3DDbx0aC0L0) - Aula 05/06
+        * [Conceitos Básicos - Parte 2](https://www.youtube.com/watch?v=eWZyjHrGOPc&list=PLJ0lWggozkU3cuZdatszs2IFYB3hYUVyE) - Aula 19/06
+        * [Composição de Funções](https://www.youtube.com/watch?v=EakK9SO1ySQ&list=PLJ0lWggozkU3cuZdatszs2IFYB3hYUVyE) - Aula 19/06
 
 ## Dias, horários e local de atendimento
 
