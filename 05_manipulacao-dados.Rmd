@@ -1,0 +1,108 @@
+---
+title: "Análise e visualização de dados com R"
+subtitle: "Manipulação de dados"
+author: "Francisco Alves"
+date: '`r paste0("2020-06-13")`'
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default", "default-fonts", "assets/styles.css"]
+    nature:
+      highlightLines: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library("readr"); library("dplyr"); library("flipbookr")
+
+df <- read_csv2("data-raw/servidoresMG_1219.csv")
+
+ipca <- 1.002192
+```
+
+# [dplyr](https://cran.r-project.org/web/packages/dplyr/)
+
+> dplyr: A Grammar of Data Manipulation
+> 
+> A fast, consistent tool for working with data frame like objects, both in memory and out of memory.
+
+```{r, out.width='30%'}
+knitr::include_graphics(path = "https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/dplyr.png")
+```
+
+---
+
+# Verbos essenciais
+
+`filter(df, var == "value")`
+```{r, out.width='10%'}
+knitr::include_graphics("assets/img/dplyr-filter.png")
+```
+
+--
+
+<hr>
+
+`arrange(df, var)`
+```{r, out.width='10%'}
+knitr::include_graphics("assets/img/dplyr-arrange.png")
+```
+
+--
+
+<hr>
+
+`select(df, var)`
+```{r, out.width='10%'}
+knitr::include_graphics("assets/img/dplyr-select.png")
+```
+
+--
+
+<hr>
+
+`mutate(df, new_var = fun(var))`
+```{r, out.width='10%'}
+knitr::include_graphics("assets/img/dplyr-mutate.png")
+```
+
+--
+
+<hr>
+
+`summarize(df, stat = fun(var))`
+```{r, out.width='10%'}
+knitr::include_graphics("assets/img/dplyr-summarize.png")
+```
+
+---
+
+# Operador pipe
+
+```{r pipe, include=FALSE}
+df %>%
+  select(orgao = descinst, 
+         vl_remuneracao_liquida = rem_pos) %>% 
+  mutate(vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) %>% 
+  group_by(orgao) %>%
+  summarize(
+    vl_mediana = median(vl_remuneracao_liquida_real),
+    n = n()) %>%
+  arrange(desc(vl_mediana)) %>%
+  filter(n > 10) %>%
+  head(10)
+```
+
+---
+
+`r chunk_reveal("pipe", break_type = "auto")`
+
+---
+class: inverse, hide-logo
+
+# Atividade
+ 
+A entrega da atividade são os commits registrados no repositório `hw01-intro-programacao-<github-user>`.
+ 
+1. Articule alguma pergunta sobre os dados `data-raw/notificacoes-covid19-mg.csv` e use um ou mais verbos do dplyr para responder;
+2. Deixe a pergunta registrada como comentário no seu script.

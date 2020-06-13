@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Análise e visualização de dados com R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Francisco Alves" />
+    <meta name="date" content="2020-06-13" />
+    <script src="libs/header-attrs-2.1/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Análise e visualização de dados com R
+## Manipulação de dados
+### Francisco Alves
+### 2020-06-13
+
+---
+
+
+
+
+# [dplyr](https://cran.r-project.org/web/packages/dplyr/)
+
+&gt; dplyr: A Grammar of Data Manipulation
+&gt; 
+&gt; A fast, consistent tool for working with data frame like objects, both in memory and out of memory.
+
+&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/dplyr.png" width="30%" /&gt;
+
+---
+
+# Verbos essenciais
+
+`filter(df, var == "value")`
+&lt;img src="assets/img/dplyr-filter.png" width="10%" /&gt;
+
+--
+
+&lt;hr&gt;
+
+`arrange(df, var)`
+&lt;img src="assets/img/dplyr-arrange.png" width="10%" /&gt;
+
+--
+
+&lt;hr&gt;
+
+`select(df, var)`
+&lt;img src="assets/img/dplyr-select.png" width="10%" /&gt;
+
+--
+
+&lt;hr&gt;
+
+`mutate(df, new_var = fun(var))`
+&lt;img src="assets/img/dplyr-mutate.png" width="10%" /&gt;
+
+--
+
+&lt;hr&gt;
+
+`summarize(df, stat = fun(var))`
+&lt;img src="assets/img/dplyr-summarize.png" width="10%" /&gt;
+
+---
+
+# Operador pipe
+
+
+
+---
+
+class: split-40
+count: false
+ 
+
+.left-code-pipe-auto[
+
+```r
+*df
+```
+]
+ 
+.right-output-pipe-auto[
+
+```
+## # A tibble: 346,779 x 35
+##      masp nome  descsitser nmefet tem_apost desccomi descinst descunid carga_hora remuner  teto judic ferias decter premio feriasprem
+##     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+##  1 1.52e6 AARA… ATIVO      CABO   0         &lt;NA&gt;     CBMMG    5 CIA I…         40   5692      0 0         0   5692       0          0
+##  2 1.21e7 AARA… ATIVO      AGENT… &lt;NA&gt;      &lt;NA&gt;     SEGURAN… UNID SO…         40   4778.     0 &lt;NA&gt;      0   4778.      0          0
+##  3 1.16e7 AARO… ATIVO      ESPEC… &lt;NA&gt;      DAI-22   JUCEMG … &lt;NA&gt;             40  20491.     0 &lt;NA&gt;      0  20491.      0          0
+##  4 1.61e6 AARO… ATIVO      SD 1 … &lt;NA&gt;      &lt;NA&gt;     POLICIA… RCAT/CPE         40   4508.    NA &lt;NA&gt;    601.  4508.     NA         NA
+##  5 1.27e7 AARO… ATIVO      PROFE… &lt;NA&gt;      &lt;NA&gt;     SECRETA… EE PE P…         21   3124.     0 &lt;NA&gt;      0   3124.      0          0
+##  6 1.40e7 ABAD… ATIVO      AUXIL… &lt;NA&gt;      &lt;NA&gt;     SECRETA… EE SAO …         30   1129.     0 &lt;NA&gt;      0   1129.      0          0
+##  7 1.22e7 ABAD… ATIVO      AUXIL… &lt;NA&gt;      &lt;NA&gt;     SECRETA… EE DONA…         30   1129.     0 &lt;NA&gt;      0   1129.      0          0
+##  8 9.70e6 ABAD… ATIVO      PROFE… &lt;NA&gt;      &lt;NA&gt;     SECRETA… EE BENE…         16   1602.     0 &lt;NA&gt;      0   1602.      0          0
+##  9 1.22e7 ABAD… ATIVO      AUXIL… &lt;NA&gt;      &lt;NA&gt;     SECRETA… EE ARMA…         30   1129.     0 &lt;NA&gt;      0   1035.      0          0
+## 10 1.24e7 ABAD… ATIVO      PROFE… &lt;NA&gt;      &lt;NA&gt;     SECRETA… EE DELA…         13   1345.     0 &lt;NA&gt;      0   1345.      0          0
+## # … with 346,769 more rows, and 19 more variables: jetons &lt;dbl&gt;, eventual &lt;dbl&gt;, ir &lt;dbl&gt;, prev &lt;dbl&gt;, rem_pos &lt;dbl&gt;, bdmg &lt;dbl&gt;,
+## #   cemig &lt;dbl&gt;, codemig &lt;dbl&gt;, cohab &lt;dbl&gt;, copasa &lt;dbl&gt;, emater &lt;dbl&gt;, epamig &lt;dbl&gt;, funpemg &lt;dbl&gt;, gasmig &lt;dbl&gt;, mgi &lt;dbl&gt;,
+## #   mgs &lt;dbl&gt;, prodemge &lt;dbl&gt;, prominas &lt;dbl&gt;, emip &lt;dbl&gt;
+```
+]
+
+---
+class: split-40
+count: false
+ 
+
+.left-code-pipe-auto[
+
+```r
+df %&gt;%  
+* select(orgao = descinst,
+*        vl_remuneracao_liquida = rem_pos)
+```
+]
+ 
+.right-output-pipe-auto[
+
+```
+## # A tibble: 346,779 x 2
+##    orgao                           vl_remuneracao_liquida
+##    &lt;chr&gt;                                            &lt;dbl&gt;
+##  1 CBMMG                                            9336.
+##  2 SEGURANCA PUBLICA                                8234.
+##  3 JUCEMG JUNTA COMERCIAL                          31055.
+##  4 POLICIA MILITAR DE MINAS GERAIS                  8058.
+##  5 SECRETARIA DE EDUCACAO                           5650.
+##  6 SECRETARIA DE EDUCACAO                           2077.
+##  7 SECRETARIA DE EDUCACAO                           2077.
+##  8 SECRETARIA DE EDUCACAO                           2876.
+##  9 SECRETARIA DE EDUCACAO                           2085.
+## 10 SECRETARIA DE EDUCACAO                           2447.
+## # … with 346,769 more rows
+```
+]
+
+---
+class: split-40
+count: false
+ 
+
+.left-code-pipe-auto[
+
+```r
+df %&gt;%  
+  select(orgao = descinst,  
+         vl_remuneracao_liquida = rem_pos) %&gt;%  
+* mutate(vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca)
+```
+]
+ 
+.right-output-pipe-auto[
+
+```
+## # A tibble: 346,779 x 3
+##    orgao                           vl_remuneracao_liquida vl_remuneracao_liquida_real
+##    &lt;chr&gt;                                            &lt;dbl&gt;                       &lt;dbl&gt;
+##  1 CBMMG                                            9336.                       9357.
+##  2 SEGURANCA PUBLICA                                8234.                       8252.
+##  3 JUCEMG JUNTA COMERCIAL                          31055.                      31123.
+##  4 POLICIA MILITAR DE MINAS GERAIS                  8058.                       8075.
+##  5 SECRETARIA DE EDUCACAO                           5650.                       5663.
+##  6 SECRETARIA DE EDUCACAO                           2077.                       2081.
+##  7 SECRETARIA DE EDUCACAO                           2077.                       2081.
+##  8 SECRETARIA DE EDUCACAO                           2876.                       2883.
+##  9 SECRETARIA DE EDUCACAO                           2085.                       2089.
+## 10 SECRETARIA DE EDUCACAO                           2447.                       2453.
+## # … with 346,769 more rows
+```
+]
+
+---
+class: split-40
+count: false
+ 
+
+.left-code-pipe-auto[
+
+```r
+df %&gt;%  
+  select(orgao = descinst,  
+         vl_remuneracao_liquida = rem_pos) %&gt;%  
+  mutate(vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) %&gt;%  
+* group_by(orgao)
+```
+]
+ 
+.right-output-pipe-auto[
+
+```
+## # A tibble: 346,779 x 3
+## # Groups:   orgao [68]
+##    orgao                           vl_remuneracao_liquida vl_remuneracao_liquida_real
+##    &lt;chr&gt;                                            &lt;dbl&gt;                       &lt;dbl&gt;
+##  1 CBMMG                                            9336.                       9357.
+##  2 SEGURANCA PUBLICA                                8234.                       8252.
+##  3 JUCEMG JUNTA COMERCIAL                          31055.                      31123.
+##  4 POLICIA MILITAR DE MINAS GERAIS                  8058.                       8075.
+##  5 SECRETARIA DE EDUCACAO                           5650.                       5663.
+##  6 SECRETARIA DE EDUCACAO                           2077.                       2081.
+##  7 SECRETARIA DE EDUCACAO                           2077.                       2081.
+##  8 SECRETARIA DE EDUCACAO                           2876.                       2883.
+##  9 SECRETARIA DE EDUCACAO                           2085.                       2089.
+## 10 SECRETARIA DE EDUCACAO                           2447.                       2453.
+## # … with 346,769 more rows
+```
+]
+
+---
+class: split-40
+count: false
+ 
+
+.left-code-pipe-auto[
+
+```r
+df %&gt;%  
+  select(orgao = descinst,  
+         vl_remuneracao_liquida = rem_pos) %&gt;%  
+  mutate(vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) %&gt;%  
+  group_by(orgao) %&gt;%  
+* summarize(
+*   vl_mediana = median(vl_remuneracao_liquida_real),
+*   n = n())
+```
+]
+ 
+.right-output-pipe-auto[
+
+```
+## # A tibble: 68 x 3
+##    orgao                                             vl_mediana     n
+##    &lt;chr&gt;                                                  &lt;dbl&gt; &lt;int&gt;
+##  1 ADMINISTRACAO PRISIONAL                                7247. 19286
+##  2 ADVOCACIA GERAL DO ESTADO                             29243.   794
+##  3 AGENCIA RMBH                                           9364.    35
+##  4 AGENCIA RMVA                                           8338.    12
+##  5 ARSAE MG                                              10837.    78
+##  6 CASA CIVIL E COMUNICACAO SOCIAL                        8919.     1
+##  7 CBMMG                                                 10439.  5788
+##  8 CONTROLADORIA GERAL DO ESTADO                         19273.   191
+##  9 DEOP DEPART DE OBRAS PUBLICAS                         12125.     4
+## 10 DEPARTAMENTO DE EDIFICACOES E ESTRADAS DE RODAGEM      9885.  1169
+## # … with 58 more rows
+```
+]
+
+---
+class: split-40
+count: false
+ 
+
+.left-code-pipe-auto[
+
+```r
+df %&gt;%  
+  select(orgao = descinst,  
+         vl_remuneracao_liquida = rem_pos) %&gt;%  
+  mutate(vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) %&gt;%  
+  group_by(orgao) %&gt;%  
+  summarize(  
+    vl_mediana = median(vl_remuneracao_liquida_real),  
+    n = n()) %&gt;%  
+* arrange(desc(vl_mediana))
+```
+]
+ 
+.right-output-pipe-auto[
+
+```
+## # A tibble: 68 x 3
+##    orgao                                                    vl_mediana     n
+##    &lt;chr&gt;                                                         &lt;dbl&gt; &lt;int&gt;
+##  1 ADVOCACIA GERAL DO ESTADO                                    29243.   794
+##  2 SECRETARIA DA FAZENDA                                        28705.  2918
+##  3 CONTROLADORIA GERAL DO ESTADO                                19273.   191
+##  4 SECRETARIA DE ESTADO DE CIDADES E DE INTEGRACAO REGIONAL     15319.     2
+##  5 INSTITUTO DE GEOINFORMACAO E TECNOLOGIA                      13788.     2
+##  6 FUNDACAO JOAO PINHEIRO                                       13151.   223
+##  7 FEAM FUNDACAO DO MEIO AMBIENTE                               12979.   104
+##  8 IGAM INST DE GESTAO DAS AGUAS                                12780.   150
+##  9 DEOP DEPART DE OBRAS PUBLICAS                                12125.     4
+## 10 SECRETARIA DO MEIO AMBIENTE                                  11558.   830
+## # … with 58 more rows
+```
+]
+
+---
+class: split-40
+count: false
+ 
+
+.left-code-pipe-auto[
+
+```r
+df %&gt;%  
+  select(orgao = descinst,  
+         vl_remuneracao_liquida = rem_pos) %&gt;%  
+  mutate(vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) %&gt;%  
+  group_by(orgao) %&gt;%  
+  summarize(  
+    vl_mediana = median(vl_remuneracao_liquida_real),  
+    n = n()) %&gt;%  
+  arrange(desc(vl_mediana)) %&gt;%  
+* filter(n &gt; 10)
+```
+]
+ 
+.right-output-pipe-auto[
+
+```
+## # A tibble: 57 x 3
+##    orgao                          vl_mediana     n
+##    &lt;chr&gt;                               &lt;dbl&gt; &lt;int&gt;
+##  1 ADVOCACIA GERAL DO ESTADO          29243.   794
+##  2 SECRETARIA DA FAZENDA              28705.  2918
+##  3 CONTROLADORIA GERAL DO ESTADO      19273.   191
+##  4 FUNDACAO JOAO PINHEIRO             13151.   223
+##  5 FEAM FUNDACAO DO MEIO AMBIENTE     12979.   104
+##  6 IGAM INST DE GESTAO DAS AGUAS      12780.   150
+##  7 SECRETARIA DO MEIO AMBIENTE        11558.   830
+##  8 IMA INST MINEIRO AGROPECUARIA      11395.  1353
+##  9 IEF INST EST DE FLORESTAS          10880.   769
+## 10 ARSAE MG                           10837.    78
+## # … with 47 more rows
+```
+]
+
+---
+class: split-40
+count: false
+ 
+
+.left-code-pipe-auto[
+
+```r
+df %&gt;%  
+  select(orgao = descinst,  
+         vl_remuneracao_liquida = rem_pos) %&gt;%  
+  mutate(vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) %&gt;%  
+  group_by(orgao) %&gt;%  
+  summarize(  
+    vl_mediana = median(vl_remuneracao_liquida_real),  
+    n = n()) %&gt;%  
+  arrange(desc(vl_mediana)) %&gt;%  
+  filter(n &gt; 10) %&gt;%  
+* head(10)
+```
+]
+ 
+.right-output-pipe-auto[
+
+```
+## # A tibble: 10 x 3
+##    orgao                          vl_mediana     n
+##    &lt;chr&gt;                               &lt;dbl&gt; &lt;int&gt;
+##  1 ADVOCACIA GERAL DO ESTADO          29243.   794
+##  2 SECRETARIA DA FAZENDA              28705.  2918
+##  3 CONTROLADORIA GERAL DO ESTADO      19273.   191
+##  4 FUNDACAO JOAO PINHEIRO             13151.   223
+##  5 FEAM FUNDACAO DO MEIO AMBIENTE     12979.   104
+##  6 IGAM INST DE GESTAO DAS AGUAS      12780.   150
+##  7 SECRETARIA DO MEIO AMBIENTE        11558.   830
+##  8 IMA INST MINEIRO AGROPECUARIA      11395.  1353
+##  9 IEF INST EST DE FLORESTAS          10880.   769
+## 10 ARSAE MG                           10837.    78
+```
+]
+
+&lt;style&gt;
+.left-code-pipe-auto {
+  color: #777;
+  width: 38%;
+  height: 92%;
+  float: left;
+  font-size: 80%
+}
+.right-output-pipe-auto {
+  width: 60%;
+  float: right;
+  padding-left: 1%;
+}
+&lt;/style&gt;
+
+
+
+---
+class: inverse, hide-logo
+
+# Atividade
+ 
+A entrega da atividade são os commits registrados no repositório `hw01-intro-programacao-&lt;github-user&gt;`.
+ 
+1. Articule alguma pergunta sobre os dados `data-raw/notificacoes-covid19-mg.csv` e use um ou mais verbos do dplyr para responder;
+2. Deixe a pergunta registrada como comentário no seu script.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
