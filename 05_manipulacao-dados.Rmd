@@ -74,35 +74,3 @@ knitr::include_graphics("assets/img/dplyr-mutate.png")
 ```{r, out.width='10%'}
 knitr::include_graphics("assets/img/dplyr-summarize.png")
 ```
-
----
-
-# Operador pipe
-
-```{r pipe, include=FALSE}
-df %>%
-  select(orgao = descinst, 
-         vl_remuneracao_liquida = rem_pos) %>% 
-  mutate(vl_remuneracao_liquida_real = vl_remuneracao_liquida * ipca) %>% 
-  group_by(orgao) %>%
-  summarize(
-    vl_mediana = median(vl_remuneracao_liquida_real),
-    n = n()) %>%
-  arrange(desc(vl_mediana)) %>%
-  filter(n > 10) %>%
-  head(10)
-```
-
----
-
-`r chunk_reveal("pipe", break_type = "auto")`
-
----
-class: inverse, hide-logo
-
-# Atividade
- 
-A entrega da atividade são os commits registrados no repositório `hw01-intro-programacao-<github-user>`.
- 
-1. Articule alguma pergunta sobre os dados `data-raw/notificacoes-covid19-mg.csv` e use um ou mais verbos do dplyr para responder;
-2. Deixe a pergunta registrada como comentário no seu script.

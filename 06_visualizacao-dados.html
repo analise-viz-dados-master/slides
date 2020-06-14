@@ -4,7 +4,7 @@
     <title>Análise e visualização de dados com R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Francisco Alves" />
-    <meta name="date" content="2020-06-13" />
+    <meta name="date" content="2020-06-14" />
     <script src="libs/header-attrs-2.1/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
@@ -15,57 +15,40 @@
 class: center, middle, inverse, title-slide
 
 # Análise e visualização de dados com R
-## Manipulação de dados
+## Visualização de dados
 ### Francisco Alves
-### 2020-06-13
+### 2020-06-14
 
 ---
 
 
 
 
-# [dplyr](https://cran.r-project.org/web/packages/dplyr/)
+# [ggplot2](https://cran.r-project.org/web/packages/ggplot2/)
 
-&gt; dplyr: A Grammar of Data Manipulation
+&gt; ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics
 &gt; 
-&gt; A fast, consistent tool for working with data frame like objects, both in memory and out of memory.
+&gt; A system for 'declaratively' creating graphics, based on "The Grammar of Graphics". You provide the data, tell 'ggplot2' how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
 
-&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/dplyr.png" width="30%" /&gt;
+
+&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/ggplot2.png" width="30%" /&gt;
 
 ---
+class: inverse, middle, center
 
-# Verbos essenciais
+# mão na massa
 
-`filter(df, var == "value")`
-&lt;img src="assets/img/dplyr-filter.png" width="10%" /&gt;
+---
+class: inverse, hide-logo
 
---
+# Atividade
+ 
+A entrega da atividade são os commits registrados no repositório `hw01-analise-viz-dados-&lt;github-user&gt;`.
+ 
+1. Faça um [diagrama de dispersão](https://pt.wikipedia.org/wiki/Gr%C3%A1fico_de_dispers%C3%A3o#Interpreta%C3%A7%C3%A3o) da expectativa de vida pelo pib per capita para os três países que tiveram a menor expectativa de vida em 1952 e associe o atributo estético cor ao país;
+2. Deixe registrado como comentário no seu script a descrição do padrão observado na visualização;
+3. Use a função `ggsave` (eg. [hw-rstudio-project](https://github.com/analise-viz-dados-master/hw-rstudio-project/blob/master/hw-rstudio-project.R)) para salvar a visualização.
 
-&lt;hr&gt;
-
-`arrange(df, var)`
-&lt;img src="assets/img/dplyr-arrange.png" width="10%" /&gt;
-
---
-
-&lt;hr&gt;
-
-`select(df, var)`
-&lt;img src="assets/img/dplyr-select.png" width="10%" /&gt;
-
---
-
-&lt;hr&gt;
-
-`mutate(df, new_var = fun(var))`
-&lt;img src="assets/img/dplyr-mutate.png" width="10%" /&gt;
-
---
-
-&lt;hr&gt;
-
-`summarize(df, stat = fun(var))`
-&lt;img src="assets/img/dplyr-summarize.png" width="10%" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

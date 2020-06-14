@@ -1,0 +1,44 @@
+---
+title: "Análise e visualização de dados com R"
+subtitle: "Visualização de dados"
+author: "Francisco Alves"
+date: '`r paste0("2020-06-14")`'
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default", "default-fonts", "assets/styles.css"]
+    nature:
+      highlightLines: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# [ggplot2](https://cran.r-project.org/web/packages/ggplot2/)
+
+> ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics
+> 
+> A system for 'declaratively' creating graphics, based on "The Grammar of Graphics". You provide the data, tell 'ggplot2' how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+
+
+```{r, out.width='30%'}
+knitr::include_graphics(path = "https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/ggplot2.png")
+```
+
+---
+class: inverse, middle, center
+
+# mão na massa
+
+---
+class: inverse, hide-logo
+
+# Atividade
+ 
+A entrega da atividade são os commits registrados no repositório `hw01-analise-viz-dados-<github-user>`.
+ 
+1. Faça um [diagrama de dispersão](https://pt.wikipedia.org/wiki/Gr%C3%A1fico_de_dispers%C3%A3o#Interpreta%C3%A7%C3%A3o) da expectativa de vida pelo pib per capita para os três países que tiveram a menor expectativa de vida em 1952 e associe o atributo estético cor ao país;
+2. Deixe registrado como comentário no seu script a descrição do padrão observado na visualização;
+3. Use a função `ggsave` (eg. [hw-rstudio-project](https://github.com/analise-viz-dados-master/hw-rstudio-project/blob/master/hw-rstudio-project.R)) para salvar a visualização.
+
