@@ -2,6 +2,31 @@ Essa lista apresenta as funções que considero que já terem sido ensinadas, co
 
 É normal que múltiplas funções sejam documentadas na mesma página. Para indicar esse fato o nome do tópico completo da documentação será utilizado (ie. `help("Arithmetic")`).
 
+## Aula 19/06 - Parte 2
+
+```r
+#======================================================================
+# Verbos básicos dplyr
+
+library(dplyr)
+
+help("filter") # return rows with matching conditions
+help("arrange") # arrange rows by variables
+help("select") # select/rename variables by name
+help("mutate") # create or transform variables
+help("summarize") # reduce multiple values down to a single value
+
+#======================================================================
+# Introdução ggplot2 
+
+library(ggplot2)
+
+help("ggplot") # create a new ggplot
+help("geom_point") # points
+help("ggsave") # save a ggplot (or other grid object) with sensible defaults
+
+```
+
 ## Aula 19/06 - Parte 1
 
 ```r
