@@ -74,3 +74,39 @@ knitr::include_graphics("assets/img/dplyr-mutate.png")
 ```{r, out.width='10%'}
 knitr::include_graphics("assets/img/dplyr-summarize.png")
 ```
+
+---
+class: inverse, middle, center
+
+# Group by
+
+---
+# Group by
+
+.center[
+```{r, out.width='70%'}
+knitr::include_graphics("http://swcarpentry.github.io/r-novice-gapminder/fig/13-dplyr-fig2.png")
+```
+]
+
+.footnote[
+Fonte: [Software Carpentry - R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/13-dplyr/index.html)
+]
+
+---
+# Group by
+
+.center[
+```{r, out.width='60%'}
+knitr::include_graphics("http://swcarpentry.github.io/r-novice-gapminder/fig/13-dplyr-fig3.png")
+```
+]
+
+.footnote[
+Fonte: [Software Carpentry - R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/13-dplyr/index.html)
+]
+
+---
+class: inverse, middle, center
+
+# mão na massa
