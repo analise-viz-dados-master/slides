@@ -593,3 +593,57 @@ knitr::include_graphics("assets/img/rstudio-cloud-new-project-git-repo.png")
 1. Faça push dos commits
 
 A entrega da atividade é o commit registrado no Github com alteração no script e na visualização. O uso do Rstudio Cloud é opcional.
+
+---
+class: inverse, middle, center
+
+# Rmarkdown
+
+---
+# Rmarkdown
+
+* Recapitulando a [videoaula](https://www.youtube.com/watch?v=gHN4Dw4mx7o&list=PLJ0lWggozkU3cuZdatszs2IFYB3hYUVyE) Pesquisa reproduzível - [Documentos Dinâmicos](https://analise-viz-dados-master.github.io/slides/03_pesquisa-reproduzivel#38):
+  * Documento Dinâmico = linguagem de marcação + linguagem de programação
+
+--
+
+* Rmarkdown = yaml + markdown + R
+
+--
+
+* Rmarkdown = yaml frontmatter + pandoc’s markdown + R code chunks
+
+---
+# Code chunk options
+
+|                  | executa código | exibe código | exibe resultado |
+|------------------|----------|-----------|--------------|
+|                  | sim      | sim       | sim          |
+| include = FALSE  | sim      | não        | não           |
+| echo = FALSE     | sim      | não        | sim          |
+| eval = FALSE     | não       | sim       | não           |
+| results = "hide" | sim      | sim       | não           |
+
+* Além disso é útil saber:
+  * `message = FALSE`
+  * `warning = FALSE`.
+
+.footnote[
+-- [Chunk options and package options](https://yihui.org/knitr/options/)
+]
+
+---
+# Misc
+
+## Image size
+
+````r
+```{r, out.width='100%'}`r ""`
+knitr::include_graphics("img/filename.png")
+```
+````
+
+## Material de Referência
+
+* https://rmarkdown.rstudio.com/
+* [R Markdown Cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
