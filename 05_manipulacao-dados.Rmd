@@ -2,7 +2,7 @@
 title: "Análise e visualização de dados com R"
 subtitle: "Manipulação de dados"
 author: "Francisco Alves"
-date: '`r paste0("2020-06-13")`'
+date: '`r paste0("2020-06-13 (Atualizado em ", Sys.Date(), ")")`'
 output: 
   xaringan::moon_reader:
     lib_dir: libs
@@ -105,6 +105,26 @@ knitr::include_graphics("http://swcarpentry.github.io/r-novice-gapminder/fig/13-
 .footnote[
 Fonte: [Software Carpentry - R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/13-dplyr/index.html)
 ]
+
+---
+class: inverse, middle, center
+
+# mão na massa
+
+---
+class: inverse, middle, center
+
+# Dados relacionais 
+
+## aka Cruzamento de dados
+
+---
+# Tipos de cruzamento
+
+* Combinar (bind)
+
+* Juntar (join)
+    * Pesquisar (lookup)
 
 ---
 class: inverse, middle, center

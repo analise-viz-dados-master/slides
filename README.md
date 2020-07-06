@@ -23,8 +23,8 @@ O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no You
         * [Organização de projetos](https://www.youtube.com/watch?v=0xNtq0adKbA) - Aula 29/05
         * [Rstudio Cloud](https://www.youtube.com/watch?v=eZHEwo81758) - Aula 29/05
         * [Rstudio Local](https://www.youtube.com/watch?v=Ra8pFY1P4zU) - Aula 29/05
-        * [Rmarkdown](https://youtu.be/_m1x7fZsbWc) - Aula 03/07 - [Slides 64-69](https://analise-viz-dados-master.github.io/slides/03_pesquisa-reproduzivel#69) :new:
-        * [Controle de Versão - Conflitos de merge](https://www.youtube.com/watch?v=39C2txxqxVM) - Aula 03/07 :new:
+        * [Rmarkdown](https://youtu.be/_m1x7fZsbWc) - Aula 03/07 - [Slides 64-69](https://analise-viz-dados-master.github.io/slides/03_pesquisa-reproduzivel#69)
+        * [Controle de Versão - Conflitos de merge](https://www.youtube.com/watch?v=39C2txxqxVM) - Aula 03/07
 * Introdução à Programação
     * [Slides](https://analise-viz-dados-master.github.io/slides/04_intro-programacao.html)
     * Videoaulas
@@ -38,7 +38,8 @@ O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no You
     * Videoaulas
         * [Verbos básicos dplyr](https://www.youtube.com/watch?v=qRf-SpFZs74) - Aula 19/06 - Slides 1-7
         * [dplyr group by](https://www.youtube.com/watch?v=sLYSq9YldN4) - Aula 26/06 - Slides 8-11
-        * [Importação de Dados - Excel](https://www.youtube.com/watch?v=Uc5eXnj0m-4) - Aula 03/07 :new:
+        * [Importação de Dados - Excel](https://www.youtube.com/watch?v=Uc5eXnj0m-4) - Aula 03/07
+        * [Cruzamento de dados - left_join](https://www.youtube.com/watch?v=-JMjaT8oI7k) - Aula 10/07 :new:
 * Visualização de dados
     * [Slides](https://analise-viz-dados-master.github.io/slides/06_visualizacao-dados.html)
     * Videoaulas
@@ -46,7 +47,7 @@ O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no You
         * [Faceting](https://www.youtube.com/watch?v=WpThEnVhKoI) - Aula 26/06 - Slides 5-6
 * Discussão Atividades
     * [Atividade 19/06](https://www.youtube.com/watch?v=g4WGrHXs7HI)
-    * [Atividade 26/06](https://www.youtube.com/watch?v=ncOKRNZHbPs) :new:
+    * [Atividade 26/06](https://www.youtube.com/watch?v=ncOKRNZHbPs)
 
 ## Dias, horários e local de atendimento
 
@@ -60,8 +61,6 @@ __Se o atendimento pré-agendado não for mais necessário, cancele o compromiss
 
 ## Atividades avaliativas
 
-Os 30 pontos de exercícios práticos em sala de aula serão distribuídos com base na entrega das atividades presentes nas videoaulas. As duplas previamente formadas não serão mais utilizadas para essas atividades.
-
 Somente serão consideradas para fins de pontuação as atividades entregues até meia-noite de domingo da semana da aula.
 
-Detalhes sobre os trabalhos em grupo serão repassados em seu devido tempo.
+Detalhes sobre o trabalho final está disponível [aqui](https://www.youtube.com/watch?v=h6VrH95KU4c).
