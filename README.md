@@ -1,6 +1,8 @@
 # Análise e visualização de dados com R
 
-O plano de ensino da disciplina, atualizado depois da adoção do formato EaD e contendo o cronograma de liberação das videoaulas, está disponível [aqui](plano_ensino_2020-05-11.pdf).
+O plano de ensino inicial da disciplina, atualizado depois da adoção do formato EaD, está disponível [aqui](plano_ensino_2020-05-11.pdf).
+
+O plano de ensino vigente, com adequação das atividades avaliativas, está [aqui](plano_ensino_2020-07-05.pdf).
 
 ## Videoaulas
 
