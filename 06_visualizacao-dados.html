@@ -4,7 +4,6 @@
     <title>Análise e visualização de dados com R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Francisco Alves" />
-    <meta name="date" content="2020-06-14" />
     <script src="libs/header-attrs-2.1/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
@@ -17,7 +16,7 @@ class: center, middle, inverse, title-slide
 # Análise e visualização de dados com R
 ## Visualização de dados
 ### Francisco Alves
-### 2020-06-14
+### 2020-06-14 (Atualizado em 2020-07-10)
 
 ---
 
@@ -58,6 +57,169 @@ class: inverse, middle, center
 class: inverse, middle, center
 
 # mão na massa
+---
+class: inverse, middle, center
+
+# Gramática dos gráficos
+
+---
+# Camadas
+
+Até agora, aprendemos a utilizar os seguintes elementos para construção de um gráfico:
+
+- Dados
+- Forma geométrica (eg. ponto)
+- Atributos estéticos (eg. cor)
+- Facetas (ie. sub-gráficos)
+
+Esses elementos podem ser representados com o seguinte template de código:
+
+```r
+ggplot(data = &lt;DATA&gt;) + 
+  &lt;GEOM_FUNCTION&gt;(
+     mapping = aes(&lt;MAPPINGS&gt;)
+  ) +
+  &lt;FACET_FUNCTION&gt;
+```
+
+.footnote[
+Fonte: [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#the-layered-grammar-of-graphics)
+]
+
+---
+# Camada - Transformações Estatísticas
+
+Imagine que produzimos uma tabela com a lista dos países e respectivos continentes com o código
+
+
+```r
+df &lt;- gapminder %&gt;% 
+  distinct(country, continent)
+```
+
+.pull-left[
+As primeiras linhas dessa tabela são
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; continent &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Afghanistan &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Albania &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Algeria &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Angola &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Argentina &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Americas &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Oceania &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.pull-right[
+O quantitativo de países por continente é
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; continent &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 52 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Americas &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Oceania &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+# Camada - Transformações Estatísticas
+
+.pull-left[
+
+```r
+df %&gt;% 
+  ggplot(aes(x = continent)) +
+  geom_bar()
+```
+]
+
+.pull-right[
+![](assets/img/barplot-1.png)
+]
+
+---
+# Camada - Transformações Estatísticas
+
+.pull-left[
+
+```r
+df %&gt;% 
+  count(continent) %&gt;% 
+  ggplot(aes(x = continent, y = n)) +
+  geom_col()
+```
+]
+
+.pull-right[
+![](assets/img/colplot-1.png)
+]
+
+---
+# Camada - Transformações Estatísticas
+
+![](assets/img/geom-smooth-1.png)&lt;!-- --&gt;
+
+---
+# Camada - Transformações Estatísticas
+
+
+```r
+gapminder %&gt;% 
+  filter(country %in% c("Afghanistan", "Gambia", "Angola")) %&gt;% 
+  ggplot(aes(x = gdpPercap, y = lifeExp, color = country)) + 
+  geom_point() +
+  geom_smooth(stat = "smooth", formula = "y ~ x", method = "lm")
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

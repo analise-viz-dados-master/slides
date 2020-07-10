@@ -2,7 +2,7 @@
 title: "Análise e visualização de dados com R"
 subtitle: "Visualização de dados"
 author: "Francisco Alves"
-date: '`r paste0("2020-06-14")`'
+date: '`r paste0("2020-06-14 (Atualizado em ", Sys.Date(), ")")`'
 output: 
   xaringan::moon_reader:
     lib_dir: libs
@@ -12,7 +12,8 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, fig.path='assets/img/')
+library(gapminder); library(dplyr); library(ggplot2)
 ```
 
 # [ggplot2](https://cran.r-project.org/web/packages/ggplot2/)
@@ -51,3 +52,114 @@ class: inverse, middle, center
 class: inverse, middle, center
 
 # mão na massa
+---
+class: inverse, middle, center
+
+# Gramática dos gráficos
+
+---
+# Camadas
+
+Até agora, aprendemos a utilizar os seguintes elementos para construção de um gráfico:
+
+- Dados
+- Forma geométrica (eg. ponto)
+- Atributos estéticos (eg. cor)
+- Facetas (ie. sub-gráficos)
+
+Esses elementos podem ser representados com o seguinte template de código:
+
+```r
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(
+     mapping = aes(<MAPPINGS>)
+  ) +
+  <FACET_FUNCTION>
+```
+
+.footnote[
+Fonte: [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#the-layered-grammar-of-graphics)
+]
+
+---
+# Camada - Transformações Estatísticas
+
+Imagine que produzimos uma tabela com a lista dos países e respectivos continentes com o código
+
+```{r, echo=TRUE}
+df <- gapminder %>% 
+  distinct(country, continent)
+```
+
+.pull-left[
+As primeiras linhas dessa tabela são
+
+```{r}
+df %>% 
+  head() %>% 
+  knitr::kable("html")
+```
+]
+
+.pull-right[
+O quantitativo de países por continente é
+
+```{r}
+df %>% 
+  count(continent) %>% 
+  knitr::kable("html")
+```
+]
+
+---
+# Camada - Transformações Estatísticas
+
+.pull-left[
+```{r barplot, fig.show="hide", echo=TRUE}
+df %>% 
+  ggplot(aes(x = continent)) +
+  geom_bar()
+```
+]
+
+.pull-right[
+![](`r knitr::fig_chunk("barplot", "png")`)
+]
+
+---
+# Camada - Transformações Estatísticas
+
+.pull-left[
+```{r colplot, fig.show="hide", echo=TRUE}
+df %>% 
+  count(continent) %>% 
+  ggplot(aes(x = continent, y = n)) +
+  geom_col()
+```
+]
+
+.pull-right[
+![](`r knitr::fig_chunk("colplot", "png")`)
+]
+
+---
+# Camada - Transformações Estatísticas
+
+```{r geom-smooth}
+gapminder %>% 
+  filter(country %in% c("Afghanistan", "Gambia", "Angola")) %>% 
+  ggplot(aes(x = gdpPercap, y = lifeExp, color = country)) + 
+  geom_point() +
+  geom_smooth(method = "lm", formula = "y ~ x")
+```
+
+---
+# Camada - Transformações Estatísticas
+
+```{r, eval=FALSE, echo=TRUE}
+gapminder %>% 
+  filter(country %in% c("Afghanistan", "Gambia", "Angola")) %>% 
+  ggplot(aes(x = gdpPercap, y = lifeExp, color = country)) + 
+  geom_point() +
+  geom_smooth(stat = "smooth", formula = "y ~ x", method = "lm")
+```
