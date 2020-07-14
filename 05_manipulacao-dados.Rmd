@@ -130,3 +130,74 @@ class: inverse, middle, center
 class: inverse, middle, center
 
 # mão na massa
+
+---
+class: inverse, middle, center
+
+# Tidy data
+
+---
+# Wide vs long
+
+.center[
+```{r, out.width='25%'}
+knitr::include_graphics("http://swcarpentry.github.io/r-novice-gapminder/fig/14-tidyr-fig1.png")
+```
+]
+
+.footnote[
+Fonte: [Software Carpentry - R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/14-tidyr/index.html)
+]
+
+---
+# Pivot
+
+.center[
+```{r, out.width='100%'}
+knitr::include_graphics("http://swcarpentry.github.io/r-novice-gapminder/fig/14-tidyr-fig3.png")
+```
+]
+
+.footnote[
+Fonte: [Software Carpentry - R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/14-tidyr/index.html)
+]
+
+
+---
+class: inverse, middle, center
+
+# abre parênteses
+
+---
+# Tidyverse
+
+Conjunto de pacotes para manipulação e análise de dados que possuem uma interface de utilização similar.
+
+Além disso
+
+```r
+library("tidyverse")
+```
+
+no lugar de
+
+```r
+library("readr"); library("tibble") # importação
+library("tidyr"); library("dplyr"); library("stringr"); library("forcats") # manipulação
+library("ggplot2") # visualização
+library("purrr") # programação
+```
+
+.footnote[
+-- [Welcome to the Tidyverse](https://www.theoj.org/joss-papers/joss.01686/10.21105.joss.01686.pdf)
+]
+
+---
+class: inverse, middle, center
+
+# fecha parênteses
+
+---
+class: inverse, middle, center
+
+# mão na massa
