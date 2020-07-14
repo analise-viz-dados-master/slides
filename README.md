@@ -41,12 +41,14 @@ O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no You
         * [Verbos básicos dplyr](https://www.youtube.com/watch?v=qRf-SpFZs74) - Aula 19/06 - Slides 1-7
         * [dplyr group by](https://www.youtube.com/watch?v=sLYSq9YldN4) - Aula 26/06 - Slides 8-11
         * [Importação de Dados - Excel](https://www.youtube.com/watch?v=Uc5eXnj0m-4) - Aula 03/07
-        * [Cruzamento de dados - left_join](https://www.youtube.com/watch?v=-JMjaT8oI7k) - Aula 10/07 :new:
+        * [Cruzamento de dados - left_join](https://www.youtube.com/watch?v=-JMjaT8oI7k) - Aula 10/07
+        * [Tidy data](https://www.youtube.com/watch?v=JSsgybFrnYo) - Aula 17/07 - [Slides 15-21](https://analise-viz-dados-master.github.io/slides/05_manipulacao-dados.html#15) :new:
 * Visualização de dados
     * [Slides](https://analise-viz-dados-master.github.io/slides/06_visualizacao-dados.html)
     * Videoaulas
         * [Introdução ggplot2](https://www.youtube.com/watch?v=K_dM6U_ZJJ8) - Aula 19/06 - Slides 1-4
         * [Faceting](https://www.youtube.com/watch?v=WpThEnVhKoI) - Aula 26/06 - Slides 5-6
+        * [Gramática dos Gráficos](https://www.youtube.com/watch?v=XY81IP0zYBE) - Aula 17/07 - [Slides 7-13](https://analise-viz-dados-master.github.io/slides/06_visualizacao-dados.html#7) :new:
 * Discussão Atividades
     * [Atividade 19/06](https://www.youtube.com/watch?v=g4WGrHXs7HI)
     * [Atividade 26/06](https://www.youtube.com/watch?v=ncOKRNZHbPs)
