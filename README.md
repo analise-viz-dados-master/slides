@@ -43,16 +43,20 @@ O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no You
         * [Importação de Dados - Excel](https://www.youtube.com/watch?v=Uc5eXnj0m-4) - Aula 03/07
         * [Cruzamento de dados - left_join](https://www.youtube.com/watch?v=-JMjaT8oI7k) - Aula 10/07
         * [Tidy data](https://www.youtube.com/watch?v=JSsgybFrnYo) - Aula 17/07 - [Slides 15-21](https://analise-viz-dados-master.github.io/slides/05_manipulacao-dados.html#15)
-        * [Variáveis Qualitativas (ou categóricas) - Fatores](https://www.youtube.com/watch?v=M8q4Vx_rc3k) - Aula 24/07 :new:
-        * [Discretização - cut](https://www.youtube.com/watch?v=saXK7MVa94M) - Aula 24/07 :new:
-        * [Recodificação - ifelse e case_when](https://www.youtube.com/watch?v=Re0k_oSgRNk) - Aula 24/07 :new:
-        * [Valores ausentes NA](https://www.youtube.com/watch?v=PjrreJiocKo) - Aula 24/07 :new:
+        * [Variáveis Qualitativas (ou categóricas) - Fatores](https://www.youtube.com/watch?v=M8q4Vx_rc3k) - Aula 24/07
+        * [Discretização - cut](https://www.youtube.com/watch?v=saXK7MVa94M) - Aula 24/07
+        * [Recodificação - ifelse e case_when](https://www.youtube.com/watch?v=Re0k_oSgRNk) - Aula 24/07
+        * [Valores ausentes NA](https://www.youtube.com/watch?v=PjrreJiocKo) - Aula 24/07
+        * [Tidy data - pivot_wider](https://www.youtube.com/watch?v=vKaS_2A4Za4) - Aula 31/07 - :new:
+        * [Cruzamento de dados - anti_join](https://www.youtube.com/watch?v=qmHL1WNiIyw) - Aula 31/07 - :new:
+        * [Tidy data - fill](https://www.youtube.com/watch?v=EE7iT6FXiYg) - Aula 31/07 - :new:
 * Visualização de dados
     * [Slides](https://analise-viz-dados-master.github.io/slides/06_visualizacao-dados.html)
     * Videoaulas
         * [Introdução ggplot2](https://www.youtube.com/watch?v=K_dM6U_ZJJ8) - Aula 19/06 - Slides 1-4
         * [Faceting](https://www.youtube.com/watch?v=WpThEnVhKoI) - Aula 26/06 - Slides 5-6
         * [Gramática dos Gráficos](https://www.youtube.com/watch?v=XY81IP0zYBE) - Aula 17/07 - [Slides 7-13](https://analise-viz-dados-master.github.io/slides/06_visualizacao-dados.html#7)
+        * [Pacote patchwork](https://www.youtube.com/watch?v=lbIujLL4BGs) - Aula 31/07 - :new:
 * Discussão Atividades
     * [Atividade 19/06](https://www.youtube.com/watch?v=g4WGrHXs7HI)
     * [Atividade 26/06](https://www.youtube.com/watch?v=ncOKRNZHbPs)
