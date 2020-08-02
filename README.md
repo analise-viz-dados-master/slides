@@ -47,19 +47,30 @@ O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no You
         * [Discretização - cut](https://www.youtube.com/watch?v=saXK7MVa94M) - Aula 24/07
         * [Recodificação - ifelse e case_when](https://www.youtube.com/watch?v=Re0k_oSgRNk) - Aula 24/07
         * [Valores ausentes NA](https://www.youtube.com/watch?v=PjrreJiocKo) - Aula 24/07
-        * [Tidy data - pivot_wider](https://www.youtube.com/watch?v=vKaS_2A4Za4) - Aula 31/07 - :new:
-        * [Cruzamento de dados - anti_join](https://www.youtube.com/watch?v=qmHL1WNiIyw) - Aula 31/07 - :new:
-        * [Tidy data - fill](https://www.youtube.com/watch?v=EE7iT6FXiYg) - Aula 31/07 - :new:
+        * [Tidy data - pivot_wider](https://www.youtube.com/watch?v=vKaS_2A4Za4) - Aula 31/07
+        * [Cruzamento de dados - anti_join](https://www.youtube.com/watch?v=qmHL1WNiIyw) - Aula 31/07
+        * [Tidy data - fill](https://www.youtube.com/watch?v=EE7iT6FXiYg) - Aula 31/07
 * Visualização de dados
     * [Slides](https://analise-viz-dados-master.github.io/slides/06_visualizacao-dados.html)
     * Videoaulas
         * [Introdução ggplot2](https://www.youtube.com/watch?v=K_dM6U_ZJJ8) - Aula 19/06 - Slides 1-4
         * [Faceting](https://www.youtube.com/watch?v=WpThEnVhKoI) - Aula 26/06 - Slides 5-6
         * [Gramática dos Gráficos](https://www.youtube.com/watch?v=XY81IP0zYBE) - Aula 17/07 - [Slides 7-13](https://analise-viz-dados-master.github.io/slides/06_visualizacao-dados.html#7)
-        * [Pacote patchwork](https://www.youtube.com/watch?v=lbIujLL4BGs) - Aula 31/07 - :new:
+        * [Pacote patchwork](https://www.youtube.com/watch?v=lbIujLL4BGs) - Aula 31/07
+* Programação funcional
+    * [Slides](https://analise-viz-dados-master.github.io/slides/07_intro-programacao-funcional.html)
+    * Videoaulas
+        * [Funções - Parte 1](https://www.youtube.com/watch?v=cMok648-zGU) - Aula 07/08 :new:
+        * [Funções - Parte 2](https://www.youtube.com/watch?v=tyKNnfn7zds) - Aula 07/08 :new:
+        * [Funções - Parte 3](https://www.youtube.com/watch?v=6wEkVmYfNYc) - Aula 07/08 :new:
 * Discussão Atividades
     * [Atividade 19/06](https://www.youtube.com/watch?v=g4WGrHXs7HI)
     * [Atividade 26/06](https://www.youtube.com/watch?v=ncOKRNZHbPs)
+* Solução Atividades
+    * [Atividade 03/07](https://github.com/analise-viz-dados-master/hw03-analise-viz-dados)
+    * [Atividade 10/07](https://github.com/analise-viz-dados-master/hw04-analise-viz-dados)
+    * [Atividade 17/07](https://github.com/analise-viz-dados-master/hw05-analise-viz-dados)
+    * [Atividade 24/07](https://github.com/analise-viz-dados-master/hw06-analise-viz-dados)
 
 ## Dias, horários e local de atendimento
 

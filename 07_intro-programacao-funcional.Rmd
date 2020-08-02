@@ -1,0 +1,87 @@
+---
+title: "Análise e visualização de dados com R"
+subtitle: "Introdução à Programação Funcional"
+author: "Francisco Alves"
+date: '`r paste0("2020-08-01")`'
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default", "default-fonts", "assets/styles.css"]
+    nature:
+      highlightLines: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Funções
+
+.pull-left[
+Definição
+$$
+f(x) = x^2 + 2
+$$
+<br>
+<br>
+
+Invocação
+$$
+f(2)
+$$
+]
+
+--
+
+.pull-right[
+Definição
+```r
+f <- function(x) {
+  x^2 + 2
+}
+```
+
+Invocação
+```r
+f(2)
+```
+]
+
+--
+
+Em ambos os casos os componentes de uma função são
+
+- Argumento ( $x$ )
+- Regra ( $x^2 + 2$ )
+- Resultado ( $f(x)$ )
+- Nome ( $f$ )
+
+---
+# Funções como abstrações
+
+$$
+f(x) = \sqrt{x} + 2
+$$
+
+--
+
+Duas características da abstração:
+
+- detalhes de cálculo estão escondidos
+
+--
+
+- nome e símbolo para conferir identidade e possibilitar reuso
+
+--
+
+.center[
+```{r}
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/3/3b/Function_machine2.svg")
+```
+]
+
+---
+class: inverse, middle, center
+
+# mão na massa
