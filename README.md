@@ -74,13 +74,7 @@ O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no You
 
 ## Dias, horários e local de atendimento
 
-Será ofertado atendimento síncrono no horário usual da aula (Sexta feira 13:00 às 14:40) para solução de dúvidas. 
-
-O atendimento será no [Jitsi Meet](https://meet.jit.si/CSAP2020-R) da disciplina. 
-
-Os alunos que fizerem agendamento prévio [neste link](https://meetings.hubspot.com/fjunior-alves-oliveira) terão prioridade no atendimento, mas vou estar online para outras dúvidas eventuais.
-
-__Se o atendimento pré-agendado não for mais necessário, cancele o compromisso no seu calendário.__
+Não será ofertado atendimento síncrono no horário usual da aula (Sexta feira 13:00 às 14:40) no dia 07/08. 
 
 ## Atividades avaliativas
 
