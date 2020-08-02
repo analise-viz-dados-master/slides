@@ -67,10 +67,10 @@ O conteúdo das aulas será dado de forma assíncrona por meio de vídeos no You
     * [Atividade 19/06](https://www.youtube.com/watch?v=g4WGrHXs7HI)
     * [Atividade 26/06](https://www.youtube.com/watch?v=ncOKRNZHbPs)
 * Solução Atividades
-    * [Atividade 03/07](https://github.com/analise-viz-dados-master/hw03-analise-viz-dados)
-    * [Atividade 10/07](https://github.com/analise-viz-dados-master/hw04-analise-viz-dados)
-    * [Atividade 17/07](https://github.com/analise-viz-dados-master/hw05-analise-viz-dados)
-    * [Atividade 24/07](https://github.com/analise-viz-dados-master/hw06-analise-viz-dados)
+    * [Atividade 03/07](https://github.com/analise-viz-dados-master/hw03-analise-viz-dados) :new:
+    * [Atividade 10/07](https://github.com/analise-viz-dados-master/hw04-analise-viz-dados) :new:
+    * [Atividade 17/07](https://github.com/analise-viz-dados-master/hw05-analise-viz-dados) :new:
+    * [Atividade 24/07](https://github.com/analise-viz-dados-master/hw06-analise-viz-dados) :new:
 
 ## Dias, horários e local de atendimento
 
